@@ -1,0 +1,49 @@
+<resources>
+    <string name="app_name">Valorant Companion App</string>
+
+    <!-- LoginActivity / Register Activity -->
+    <string name="login_welcome">Welcome!</string>
+    <string name="login_riotid">RiotId</string>
+    <string name="login_password">Password</string>
+    <string name="reg_register">Register!</string>
+    <string name="reg_riotid">RiotId: (e.g. ValorantUser123)</string>
+    <string name="reg_tagline">Tagline: (e.g. #1234)</string>
+    <string-array name="reg_rank">
+        <item>Rank</item>
+        <item>Unranked</item>
+        <item>Iron 1</item>
+        <item>Iron 2</item>
+        <item>Iron 3</item>
+        <item>Bronze 1</item>
+        <item>Bronze 2</item>
+        <item>Bronze 3</item>
+        <item>Silver 1</item>
+        <item>Silver 2</item>
+        <item>Silver 3</item>
+        <item>Gold 1</item>
+        <item>Gold 2</item>
+        <item>Gold 3</item>
+        <item>Platinum 1</item>
+        <item>Platinum 2</item>
+        <item>Platinum 3</item>
+        <item>Diamond 1</item>
+        <item>Diamond 2</item>
+        <item>Diamond 3</item>
+        <item>Immortal 1</item>
+        <item>Immortal 2</item>
+        <item>Immortal 3</item>
+        <item>Radiant</item>
+    </string-array>
+    <string-array name="reg_regions">
+        <item>Region</item>
+        <item>SEA</item>
+        <item>EMEA</item>
+        <item>NA</item>
+        <item>OCEANIA</item>
+    </string-array>
+
+
+    <!-- contentDescriptions -->
+    <string name="icon_desc">Valorant Icon</string>
+
+</resources>
