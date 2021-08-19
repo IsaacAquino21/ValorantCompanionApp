@@ -32,19 +32,19 @@
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <EditText
-        android:id="@+id/et_riotid"
+        android:id="@+id/et_email"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="60dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/custom_input"
-        android:drawableStart="@drawable/custom_account"
+        android:drawableStart="@drawable/custom_email"
         android:drawablePadding="12dp"
-        android:hint="@string/login_riotid"
+        android:hint="@string/login_email"
         android:paddingStart="8dp"
+        android:paddingEnd="8dp"
         android:textColor="@color/black"
-        android:textColorHint="@color/black"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -64,11 +64,10 @@
         android:inputType="textPassword"
         android:paddingStart="8dp"
         android:textColor="@color/black"
-        android:textColorHint="@color/black"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_riotid" />
+        app:layout_constraintTop_toBottomOf="@id/et_email" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_loginbutton"
@@ -107,6 +106,16 @@
         android:textSize="40sp"
         android:textColor="@color/white"
         android:background="@color/valorant_red2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+    <ProgressBar
+        android:id="@+id/pb_progressbar"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>

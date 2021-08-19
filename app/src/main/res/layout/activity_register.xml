@@ -4,13 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/valorant_splash"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:context=".RegisterActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        tools:context=".RegisterActivity">
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/iv_valorant_ic"
@@ -49,7 +48,6 @@
             android:hint="@string/reg_riotid"
             android:paddingStart="8dp"
             android:textColor="@color/black"
-            android:textColorHint="@color/black"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -69,7 +67,6 @@
             android:hint="Tagline: (e.g. #0000)"
             android:paddingStart="8dp"
             android:textColor="@color/black"
-            android:textColorHint="@color/black"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -100,6 +97,26 @@
             app:layout_constraintTop_toBottomOf="@id/spn_rank" />
 
         <EditText
+            android:id="@+id/et_email"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/custom_input"
+            android:drawableStart="@drawable/custom_email"
+            android:drawablePadding="12dp"
+            android:focusable="true"
+            android:hint="@string/login_email"
+            android:inputType="textEmailAddress"
+            android:paddingStart="8dp"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/spn_region" />
+
+        <EditText
             android:id="@+id/et_password"
             android:layout_width="match_parent"
             android:layout_height="48dp"
@@ -114,11 +131,10 @@
             android:inputType="textPassword"
             android:paddingStart="8dp"
             android:textColor="@color/black"
-            android:textColorHint="@color/black"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/spn_region" />
+            app:layout_constraintTop_toBottomOf="@id/et_email" />
 
         <EditText
             android:id="@+id/et_confirmpassword"
@@ -135,7 +151,6 @@
             android:hint="Confirm Password"
             android:textColor="@color/black"
             android:textSize="20sp"
-            android:textColorHint="@color/black"
             android:inputType="textPassword"
             app:layout_constraintTop_toBottomOf="@id/et_password"
             app:layout_constraintStart_toStartOf="parent"

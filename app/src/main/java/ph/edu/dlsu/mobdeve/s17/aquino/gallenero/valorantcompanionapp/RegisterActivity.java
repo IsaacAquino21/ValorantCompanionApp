@@ -3,17 +3,26 @@ package ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Objects;
 
 import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.databinding.ActivityRegisterBinding;
+import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.util.User;
 
 public class RegisterActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private ActivityRegisterBinding binding;
@@ -21,8 +30,10 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
     private String tagline;
     private String rank;
     private String region;
+    private String email;
     private String password;
 
+    private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,79 +43,17 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
         //hide action bar
         Objects.requireNonNull(getSupportActionBar()).hide();
 
-        Spinner spinner1 = binding.spnRank;
-        Spinner spinner2 = binding.spnRegion;
+        //initialize FirebaseAuth
+        mAuth = FirebaseAuth.getInstance();
 
-        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter
-                .createFromResource(this,
-                        R.array.reg_rank, android.R.layout.simple_spinner_item);
-
-        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter
-                .createFromResource(this,
-                        R.array.reg_regions, android.R.layout.simple_spinner_item);
-
-        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        spinner1.setAdapter(adapter1);
-        spinner2.setAdapter(adapter2);
-        spinner1.setOnItemSelectedListener(this);
-        spinner2.setOnItemSelectedListener(this);
-
+        initializeSpinners();
         initializeAccountDetails();
 
         binding.btnRegisterbutton.setOnClickListener(v -> {
-            if(validAccountDetails() == -1){
-                Toast.makeText(getApplicationContext(), "Empty RiotId",
-                        Toast.LENGTH_SHORT).show();
-            }
+            int result = validAccountDetails();
 
-            else if(validAccountDetails() == -2){
-                Toast.makeText(getApplicationContext(), "Empty Tagline",
-                        Toast.LENGTH_SHORT).show();
-            }
-
-            else if(validAccountDetails() == -3){
-                Toast.makeText(getApplicationContext(), "Empty Password",
-                        Toast.LENGTH_SHORT).show();
-            }
-
-            else if(validAccountDetails() == -4){
-                Toast.makeText(getApplicationContext(), "Empty Confirm Password",
-                        Toast.LENGTH_SHORT).show();
-            }
-
-            else if(validAccountDetails() == -5){
-                Toast.makeText(getApplicationContext(), "Passwords do not match",
-                        Toast.LENGTH_SHORT).show();
-            }
-
-            else if(validAccountDetails() == -6){
-                Toast.makeText(getApplicationContext(), "No Rank Selected",
-                        Toast.LENGTH_SHORT).show();
-            }
-
-            else if(validAccountDetails() == -7){
-                Toast.makeText(getApplicationContext(), "No Region Selected",
-                        Toast.LENGTH_SHORT).show();
-            }
-
-            //insert db access here
-            else if(validAccountDetails() == 0){
-                this.riotId = binding.etRiotid.getText().toString();
-                this.tagline = binding.etTagline.getText().toString();
-                this.password = binding.etPassword.getText().toString();
-                Log.i("RiotId", this.riotId);
-                Log.i("Tagline", this.tagline);
-                Log.i("Rank", this.rank);
-                Log.i("Region", this.region);
-                Log.i("Password", this.password);
-                Intent intent = new Intent();
-                setResult(RESULT_OK, intent);
-                finish();
-            }
-
-
+            if(result == 0)
+                registerUser();
         });
 
 
@@ -139,34 +88,128 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
         this.password = "";
     }
 
+    private void initializeSpinners(){
+        //Initialize spinners for rank and region
+        Spinner spinner1 = binding.spnRank;
+        Spinner spinner2 = binding.spnRegion;
+
+        //create adapter for spinners
+        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter
+                .createFromResource(this,
+                        R.array.reg_rank, android.R.layout.simple_spinner_item);
+
+        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter
+                .createFromResource(this,
+                        R.array.reg_regions, android.R.layout.simple_spinner_item);
+
+        //setDropDownViewResource of adapters
+        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        //set adapters of spinners
+        spinner1.setAdapter(adapter1);
+        spinner2.setAdapter(adapter2);
+
+        //set onItemSelectedListener of spinners
+        spinner1.setOnItemSelectedListener(this);
+        spinner2.setOnItemSelectedListener(this);
+    }
+
     private int validAccountDetails(){
-        //Check if all edit text fields are filled.
-        if(binding.etRiotid.getText().toString().trim().length() == 0)
+        //empty riot id
+        if(binding.etRiotid.getText().toString().trim().isEmpty()){
+            binding.etRiotid.setError("RiotId is Empty!");
             return -1;
+        }
 
-        else if(binding.etTagline.getText().toString().trim().length() == 0)
-            return -2;
+        //empty tagline
+        else if(binding.etTagline.getText().toString().trim().isEmpty()){
+            binding.etTagline.setError("Tagline is Empty!");
+            return -1;
+        }
 
-        else if(binding.etPassword.getText().toString().trim().length() == 0)
-            return -3;
+        else if(binding.etEmail.getText().toString().trim().isEmpty()){
+            binding.etEmail.setError("Email is Empty!");
+            return -1;
+        }
 
-        else if(binding.etConfirmpassword.getText().toString().trim().length() == 0)
-            return -4;
+        else if(binding.etPassword.getText().toString().trim().isEmpty()){
+            binding.etPassword.setError("Password is Empty!");
+            return -1;
+        }
+
+        else if(binding.etConfirmpassword.getText().toString().trim().isEmpty()){
+            binding.etConfirmpassword.setError("Confirm Password is Empty!");
+            return -1;
+        }
 
         String password = binding.etPassword.getText().toString();
         String confirmPassword = binding.etConfirmpassword.getText().toString();
         //check if password and confirm password match
-        if (!password.equals(confirmPassword))
-            return -5;
+        if (!password.equals(confirmPassword)){
+            binding.etConfirmpassword.setError("Passwords do not match!");
+            return -1;
+        }
 
         //check if user has selected a rank and region
-        if(this.rank.equals("Rank"))
-            return -6;
+        if(this.rank.equals("Rank")){
+            Toast.makeText(getApplicationContext(),
+                    "Please select a rank!", Toast.LENGTH_SHORT);
+            return -1;
+        }
 
-        else if(this.region.equals("Region"))
-            return -7;
+        else if(this.region.equals("Region")){
+            Toast.makeText(getApplicationContext(),
+                    "Please select a region!", Toast.LENGTH_SHORT);
+            return -1;
+        }
+
+        else if(!Patterns.EMAIL_ADDRESS.matcher(binding.etEmail.getText().toString()).matches()){
+            binding.etEmail.setError("Please enter valid email!");
+            return -1;
+        }
 
         //if all are valid
         return 0;
+    }
+
+    private void registerUser(){
+        this.riotId = binding.etRiotid.getText().toString();
+        this.tagline = binding.etTagline.getText().toString();
+        this.email = binding.etEmail.getText().toString();
+        this.password = binding.etPassword.getText().toString();
+
+        this.mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(Task<AuthResult> task) {
+                if(task.isSuccessful()){
+                    Log.i("register", "register successful");
+                    User user = new User(riotId, tagline, rank, region, email, password);
+
+                    FirebaseDatabase.getInstance().getReference("Users")
+                            .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                            .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if(task.isSuccessful()){
+                                Intent intent = new Intent();
+                                setResult(RESULT_OK, intent);
+                                finish();
+                            }
+
+                            else{
+                                Toast.makeText(getApplicationContext(),
+                                        "Failed to Register User!", Toast.LENGTH_SHORT);
+                            }
+                        }
+                    });
+                }
+
+                else{
+                    Toast.makeText(getApplicationContext(),
+                            "Failed to Register User!", Toast.LENGTH_SHORT);
+                }
+            }
+        });
     }
 }

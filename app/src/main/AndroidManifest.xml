@@ -25,6 +25,10 @@
         <activity android:name=".RegisterActivity">
 
         </activity>
+
+        <activity android:name=".MatchHistoryActivity">
+
+        </activity>
     </application>
 
 </manifest>

@@ -4,15 +4,17 @@ public class User {
     private String riotId;
     private String tagline;
     private String rank;
+    private String region;
     private String email;
-    private String country;
+    private String password;
 
-    public User(String riotId, String tagline, String rank, String email, String country) {
+    public User(String riotId, String tagline, String rank, String region, String email, String password) {
         this.riotId = riotId;
         this.tagline = tagline;
         this.rank = rank;
+        this.region = region;
         this.email = email;
-        this.country = country;
+        this.password = password;
     }
 
     public String getRiotId() {
@@ -31,7 +33,11 @@ public class User {
         return email;
     }
 
-    public String getCountry() {
-        return country;
+    public String getRegion() {
+        return region;
+    }
+
+    public String getPassword() {
+        return password;
     }
 }

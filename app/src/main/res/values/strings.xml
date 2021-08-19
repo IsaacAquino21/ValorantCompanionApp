@@ -3,7 +3,7 @@
 
     <!-- LoginActivity / Register Activity -->
     <string name="login_welcome">Welcome!</string>
-    <string name="login_riotid">RiotId</string>
+    <string name="login_email">Email</string>
     <string name="login_password">Password</string>
     <string name="reg_register">Register!</string>
     <string name="reg_riotid">RiotId: (e.g. ValorantUser123)</string>
@@ -45,5 +45,7 @@
 
     <!-- contentDescriptions -->
     <string name="icon_desc">Valorant Icon</string>
+
+    <string name="match_see"><u>See Details</u></string>
 
 </resources>
