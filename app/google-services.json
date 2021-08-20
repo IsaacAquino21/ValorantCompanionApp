@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "155727543735",
-    "project_id": "valorant-companion-app",
-    "storage_bucket": "valorant-companion-app.appspot.com"
+    "project_number": "384426471775",
+    "project_id": "valorant-companion-app-b2b1e",
+    "storage_bucket": "valorant-companion-app-b2b1e.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:155727543735:android:0e768b7666b66a5774bc32",
+        "mobilesdk_app_id": "1:384426471775:android:224cecd09e4e2f438646ea",
         "android_client_info": {
           "package_name": "ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "155727543735-up8f3j57anjtpvdg8plkr10ffid9vhfb.apps.googleusercontent.com",
+          "client_id": "384426471775-ndams0h8tnquus0g08eks4f1lpobh63t.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBRHeYHjAp2gXSkZjBO343W5syQaU68IA8"
+          "current_key": "AIzaSyCMUuJd0MoEq-_A1PdcDK0UI4wEi6qhoas"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "155727543735-up8f3j57anjtpvdg8plkr10ffid9vhfb.apps.googleusercontent.com",
+              "client_id": "384426471775-ndams0h8tnquus0g08eks4f1lpobh63t.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

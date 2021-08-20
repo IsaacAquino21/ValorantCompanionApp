@@ -55,8 +55,6 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
             if(result == 0)
                 registerUser();
         });
-
-
     }
 
     @Override
@@ -116,56 +114,73 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
     }
 
     private int validAccountDetails(){
+        String riotId = binding.etRiotid.getText().toString();
+        String tagline = binding.etTagline.getText().toString();
+        String email = binding.etEmail.getText().toString();
+        String password = binding.etPassword.getText().toString();
+        String confirmPassword = binding.etConfirmpassword.getText().toString();
+
         //empty riot id
-        if(binding.etRiotid.getText().toString().trim().isEmpty()){
+        if(riotId.trim().isEmpty()){
             binding.etRiotid.setError("RiotId is Empty!");
+            binding.etRiotid.requestFocus();
             return -1;
         }
 
         //empty tagline
-        else if(binding.etTagline.getText().toString().trim().isEmpty()){
+        else if(tagline.trim().isEmpty()){
             binding.etTagline.setError("Tagline is Empty!");
+            binding.etTagline.requestFocus();
             return -1;
         }
 
-        else if(binding.etEmail.getText().toString().trim().isEmpty()){
+        else if(email.trim().isEmpty()){
             binding.etEmail.setError("Email is Empty!");
+            binding.etEmail.requestFocus();
             return -1;
         }
 
-        else if(binding.etPassword.getText().toString().trim().isEmpty()){
+        else if(password.trim().isEmpty()){
             binding.etPassword.setError("Password is Empty!");
+            binding.etPassword.requestFocus();
             return -1;
         }
 
-        else if(binding.etConfirmpassword.getText().toString().trim().isEmpty()){
+        else if(password.length() <6){
+            binding.etPassword.setError("Password must have at least 6 characters!");
+            binding.etPassword.requestFocus();
+            return -1;
+        }
+
+        else if(confirmPassword.trim().isEmpty()){
             binding.etConfirmpassword.setError("Confirm Password is Empty!");
+            binding.etConfirmpassword.requestFocus();
             return -1;
         }
 
-        String password = binding.etPassword.getText().toString();
-        String confirmPassword = binding.etConfirmpassword.getText().toString();
         //check if password and confirm password match
         if (!password.equals(confirmPassword)){
             binding.etConfirmpassword.setError("Passwords do not match!");
+            binding.etConfirmpassword.requestFocus();
             return -1;
         }
 
         //check if user has selected a rank and region
         if(this.rank.equals("Rank")){
             Toast.makeText(getApplicationContext(),
-                    "Please select a rank!", Toast.LENGTH_SHORT);
+                    "Please select a rank!", Toast.LENGTH_SHORT).show();
             return -1;
         }
 
         else if(this.region.equals("Region")){
             Toast.makeText(getApplicationContext(),
-                    "Please select a region!", Toast.LENGTH_SHORT);
+                    "Please select a region!", Toast.LENGTH_SHORT).show();
             return -1;
         }
 
-        else if(!Patterns.EMAIL_ADDRESS.matcher(binding.etEmail.getText().toString()).matches()){
+        else if(!Patterns.EMAIL_ADDRESS.matcher(email.trim()).matches()){
             binding.etEmail.setError("Please enter valid email!");
+            binding.etEmail.requestFocus();
             return -1;
         }
 
@@ -174,17 +189,17 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
     }
 
     private void registerUser(){
-        this.riotId = binding.etRiotid.getText().toString();
-        this.tagline = binding.etTagline.getText().toString();
-        this.email = binding.etEmail.getText().toString();
-        this.password = binding.etPassword.getText().toString();
+        this.riotId = binding.etRiotid.getText().toString().trim();
+        this.tagline = binding.etTagline.getText().toString().trim();
+        this.email = binding.etEmail.getText().toString().trim();
+        this.password = binding.etPassword.getText().toString().trim();
 
         this.mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     Log.i("register", "register successful");
-                    User user = new User(riotId, tagline, rank, region, email, password);
+                    User user = new User(riotId, tagline, rank, region, email);
 
                     FirebaseDatabase.getInstance().getReference("Users")
                             .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
@@ -199,7 +214,7 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 
                             else{
                                 Toast.makeText(getApplicationContext(),
-                                        "Failed to Register User!", Toast.LENGTH_SHORT);
+                                        "Failed to Register User! Database", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
@@ -207,7 +222,7 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 
                 else{
                     Toast.makeText(getApplicationContext(),
-                            "Failed to Register User!", Toast.LENGTH_SHORT);
+                            "Failed to Register User! Create User With Email and Password", Toast.LENGTH_SHORT).show();
                 }
             }
         });
