@@ -42,7 +42,7 @@ public class StaticRvAdapter extends RecyclerView.Adapter<StaticRvAdapter.Static
     }
 
     @Override
-    public void onBindViewHolder(@NonNull StaticRVViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull StaticRVViewHolder holder, int position) {
         StaticRvModel currentItem = items.get(position);
         holder.imageView.setImageResource(currentItem.getImage());
         holder.textView.setText(currentItem.getText());

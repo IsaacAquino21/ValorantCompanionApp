@@ -12,13 +12,13 @@
         android:layout_height="200dp"
         android:padding="20dp"
         android:background="@drawable/match_top_bg">
-        
+
         <ImageView
             android:id="@+id/match_agent_photo"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/agent_cypher"
-            android:layout_centerVertical="true"/>
+            android:layout_centerVertical="true"
+            android:src="@drawable/agent_cypher" />
         <TextView
             android:id="@+id/tv_match_top"
             android:layout_width="wrap_content"

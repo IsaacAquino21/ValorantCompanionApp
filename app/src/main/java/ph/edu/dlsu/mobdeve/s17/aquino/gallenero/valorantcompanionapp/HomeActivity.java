@@ -3,6 +3,8 @@ package ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
 import java.util.Objects;
 
@@ -18,6 +20,17 @@ public class HomeActivity extends AppCompatActivity {
 
         //hide action bar
         Objects.requireNonNull(getSupportActionBar()).hide();
+        binding.tvProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Hello", Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
+
+
+
+
+
 }
