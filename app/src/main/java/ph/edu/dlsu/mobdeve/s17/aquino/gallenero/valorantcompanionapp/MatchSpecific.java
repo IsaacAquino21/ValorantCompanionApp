@@ -1,4 +1,4 @@
-package com.example.dashboard;
+package ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 

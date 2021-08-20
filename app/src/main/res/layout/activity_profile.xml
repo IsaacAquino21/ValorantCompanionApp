@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileActivity"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:padding="20dp"
+            android:background="@drawable/profile_bg">
+
+
+            <TextView
+                android:id="@+id/tv_match_top"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fried"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:layout_centerVertical="true"
+                android:textStyle="bold"
+                android:includeFontPadding="false"
+                android:layout_marginLeft="10dp"/>
+
+            <TextView
+                android:id="@+id/tv_match_top_under"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="#JEFF"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:layout_centerVertical="true"
+                android:layout_below="@id/tv_match_top"
+                android:includeFontPadding="false"
+                android:layout_marginLeft="10dp"/>
+
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:layout_marginTop="-75dp">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="125dp"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                app:cardBackgroundColor="@color/white"
+                android:elevation="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="5dp">
+
+
+                    <ImageView
+                        android:id="@+id/main_profile"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/agent_cypher"
+                        android:layout_centerHorizontal="true"/>
+                    <TextView
+                        android:id="@+id/tv_match_kills"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cypher"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        android:includeFontPadding="false"
+                        android:textColor="@color/black"
+                        android:layout_centerInParent="true"
+                        android:layout_below="@+id/main_profile"/>
+                    <TextView
+                        android:id="@+id/tv_kills_desc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Main Agent"
+                        android:textSize="14sp"
+                        android:includeFontPadding="false"
+                        android:layout_centerInParent="true"
+                        android:layout_below="@id/tv_match_kills"/>
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="125dp"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                app:cardBackgroundColor="@color/white"
+                android:elevation="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="5dp">
+
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/dia_one"
+                        android:layout_centerHorizontal="true"/>
+                    <TextView
+                        android:id="@+id/tv_match_rank"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Diamond 1"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        android:includeFontPadding="false"
+                        android:textColor="@color/black"
+                        android:layout_centerInParent="true"/>
+                    <TextView
+                        android:id="@+id/tv_rank_desc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Current Rank"
+                        android:textSize="14sp"
+                        android:includeFontPadding="false"
+                        android:layout_centerInParent="true"
+                        android:layout_below="@id/tv_match_rank"/>
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:orientation="vertical"
+            >
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Valorant Username"
+                android:layout_marginBottom="10dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:text="Fried"/>
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Tag Line"
+                android:layout_marginBottom="10dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:text="#JEFF"/>
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Region"
+                android:layout_marginBottom="10dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:text="South East Asia"/>
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                android:layout_marginBottom="10dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:text="ciriusly6@gmail.com"/>
+            </com.google.android.material.textfield.TextInputLayout>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Update"
+                android:background="@color/white"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

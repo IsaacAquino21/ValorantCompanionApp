@@ -1,4 +1,4 @@
-package com.example.dashboard;
+package ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -9,7 +9,13 @@ import android.view.WindowManager;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements UpdateRecyclerView{
+import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.adapters.DynamicRVAdapter;
+import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.adapters.StaticRvAdapter;
+import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.interfaces.UpdateRecyclerView;
+import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.models.DynamicRVModel;
+import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.models.StaticRvModel;
+
+public class MainActivity extends AppCompatActivity implements UpdateRecyclerView {
 
     private RecyclerView recyclerView, recyclerView2;
     private StaticRvAdapter staticRvAdapter;

@@ -1,4 +1,4 @@
-package ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.util;
+package ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.utils;
 
 public class User {
     private String riotId;
