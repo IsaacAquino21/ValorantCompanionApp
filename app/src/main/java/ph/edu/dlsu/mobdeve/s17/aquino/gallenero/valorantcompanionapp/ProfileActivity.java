@@ -112,6 +112,15 @@ public class ProfileActivity extends AppCompatActivity{
                 launchEdit.launch(gotoUpdate);
             }
         });
+
+        binding.btnSignout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mAuth.signOut();
+                Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void initializeAgents(){
@@ -224,6 +233,70 @@ public class ProfileActivity extends AppCompatActivity{
     }
 
     private void setRankIcon(String rank){
+        switch (rank){
+            case "Unranked":
+                break;
 
+            case "Iron 1":
+                break;
+
+            case "Iron 2":
+                break;
+
+            case "Iron 3":
+                break;
+
+            case "Bronze 1":
+                break;
+
+            case "Bronze 2":
+                break;
+
+            case "Bronze 3":
+                break;
+
+            case "Silver 1":
+                break;
+
+            case "Silver 2":
+                break;
+
+            case "Silver 3":
+                break;
+
+            case "Gold 1":
+                break;
+
+            case "Gold 2":
+                break;
+
+            case "Gold 3":
+                break;
+
+            case "Platinum 1":
+                break;
+
+            case "Platinum 2":
+                break;
+
+            case "Platinum 3":
+                break;
+
+            case "Diamond 1":
+                break;
+
+            case "Diamond 2":
+                break;
+
+            case "Diamond 3":
+                break;
+
+            case "Immortal":
+                break;
+
+            case "Radiant":
+                break;
+        }
     }
+
 }

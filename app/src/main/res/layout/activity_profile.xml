@@ -23,19 +23,17 @@
                 android:id="@+id/tv_riotid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Fried"
-                android:textSize="24sp"
-                android:textColor="@color/white"
                 android:layout_centerVertical="true"
-                android:textStyle="bold"
+                android:layout_marginStart="10dp"
                 android:includeFontPadding="false"
-                android:layout_marginStart="10dp"/>
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tv_tagline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="#JEFF"
                 android:textSize="12sp"
                 android:textColor="@color/white"
                 android:layout_centerVertical="true"
@@ -70,13 +68,11 @@
                         android:id="@+id/iv_mainagent_pic"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:src="@drawable/agent_cypher"
                         android:layout_centerHorizontal="true"/>
                     <TextView
                         android:id="@+id/tv_main_agent"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Cypher"
                         android:textStyle="bold"
                         android:textSize="20sp"
                         android:includeFontPadding="false"
@@ -115,13 +111,11 @@
                         android:id="@+id/iv_rank_pic"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:src="@drawable/dia_one"
                         android:layout_centerHorizontal="true"/>
                     <TextView
                         android:id="@+id/tv_rank"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Diamond 1"
                         android:textStyle="bold"
                         android:textSize="20sp"
                         android:includeFontPadding="false"
@@ -162,8 +156,7 @@
                     android:layout_height="wrap_content"
                     android:background="@color/white"
                     android:focusable="false"
-                    android:clickable="false"
-                    android:text="South East Asia"/>
+                    android:clickable="false"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -180,8 +173,7 @@
                     android:layout_height="wrap_content"
                     android:background="@color/white"
                     android:focusable="false"
-                    android:clickable="false"
-                    android:text="ciriusly6@gmail.com"/>
+                    android:clickable="false"/>
             </com.google.android.material.textfield.TextInputLayout>
             <Button
                 android:id="@+id/btn_update"

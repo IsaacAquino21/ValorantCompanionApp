@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
@@ -38,6 +39,9 @@ public class EditProfileActivity extends AppCompatActivity implements AdapterVie
 
         //hide action bar
         Objects.requireNonNull(getSupportActionBar()).hide();
+
+        //Set background of view
+        getWindow().setBackgroundDrawableResource(R.drawable.editprofile_bg);
 
         //initialize FirebaseAuth
         mAuth = FirebaseAuth.getInstance();

@@ -52,6 +52,9 @@ public class LoginActivity extends AppCompatActivity {
         //hide action bar
         Objects.requireNonNull(getSupportActionBar()).hide();
 
+        //set bg
+        getWindow().setBackgroundDrawableResource(R.drawable.login_bg);
+
         //Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
 
