@@ -6,6 +6,10 @@ public class User {
     private String rank;
     private String region;
     private String email;
+    private String agent;
+
+    public User() {
+    }
 
     public User(String riotId, String tagline, String rank, String region, String email) {
         this.riotId = riotId;
@@ -13,6 +17,16 @@ public class User {
         this.rank = rank;
         this.region = region;
         this.email = email;
+        this.agent = "Jett";
+    }
+
+    public User(String riotId, String tagline, String rank, String region, String email, String agent) {
+        this.riotId = riotId;
+        this.tagline = tagline;
+        this.rank = rank;
+        this.region = region;
+        this.email = email;
+        this.agent = agent;
     }
 
     public String getRiotId() {
@@ -35,4 +49,7 @@ public class User {
         return region;
     }
 
+    public String getAgent() {
+        return agent;
+    }
 }

@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -20,28 +20,28 @@
 
 
             <TextView
-                android:id="@+id/tv_match_top"
+                android:id="@+id/tv_riotid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Fried"
-                android:textSize="20sp"
+                android:textSize="24sp"
                 android:textColor="@color/white"
                 android:layout_centerVertical="true"
                 android:textStyle="bold"
                 android:includeFontPadding="false"
-                android:layout_marginLeft="10dp"/>
+                android:layout_marginStart="10dp"/>
 
             <TextView
-                android:id="@+id/tv_match_top_under"
+                android:id="@+id/tv_tagline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="#JEFF"
-                android:textSize="14sp"
+                android:textSize="12sp"
                 android:textColor="@color/white"
                 android:layout_centerVertical="true"
-                android:layout_below="@id/tv_match_top"
+                android:layout_below="@id/tv_riotid"
                 android:includeFontPadding="false"
-                android:layout_marginLeft="10dp"/>
+                android:layout_marginStart="10dp"/>
 
 
         </RelativeLayout>
@@ -67,13 +67,13 @@
 
 
                     <ImageView
-                        android:id="@+id/main_profile"
+                        android:id="@+id/iv_mainagent_pic"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:src="@drawable/agent_cypher"
                         android:layout_centerHorizontal="true"/>
                     <TextView
-                        android:id="@+id/tv_match_kills"
+                        android:id="@+id/tv_main_agent"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Cypher"
@@ -82,16 +82,16 @@
                         android:includeFontPadding="false"
                         android:textColor="@color/black"
                         android:layout_centerInParent="true"
-                        android:layout_below="@+id/main_profile"/>
+                        android:layout_below="@+id/iv_mainagent_pic"/>
                     <TextView
-                        android:id="@+id/tv_kills_desc"
+                        android:id="@+id/tv_main_agent_label"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Main Agent"
                         android:textSize="14sp"
                         android:includeFontPadding="false"
                         android:layout_centerInParent="true"
-                        android:layout_below="@id/tv_match_kills"/>
+                        android:layout_below="@id/tv_main_agent"/>
 
                 </RelativeLayout>
 
@@ -112,12 +112,13 @@
 
 
                     <ImageView
+                        android:id="@+id/iv_rank_pic"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:src="@drawable/dia_one"
                         android:layout_centerHorizontal="true"/>
                     <TextView
-                        android:id="@+id/tv_match_rank"
+                        android:id="@+id/tv_rank"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Diamond 1"
@@ -127,14 +128,14 @@
                         android:textColor="@color/black"
                         android:layout_centerInParent="true"/>
                     <TextView
-                        android:id="@+id/tv_rank_desc"
+                        android:id="@+id/tv_rank_label"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Current Rank"
                         android:textSize="14sp"
                         android:includeFontPadding="false"
                         android:layout_centerInParent="true"
-                        android:layout_below="@id/tv_match_rank"/>
+                        android:layout_below="@id/tv_rank"/>
 
                 </RelativeLayout>
 
@@ -144,73 +145,65 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="20dp"
-            android:orientation="vertical"
-            >
+            android:padding="10dp"
+            android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Valorant Username"
-                android:layout_marginBottom="10dp">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-
-                    android:text="Fried"/>
-            </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Tag Line"
-                android:layout_marginBottom="10dp">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-
-                    android:text="#JEFF"/>
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:background="@color/white"
                 android:hint="Region"
+                android:textColorHint="@color/valorant_red1"
                 android:layout_marginBottom="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tv_region"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-
+                    android:background="@color/white"
+                    android:focusable="false"
+                    android:clickable="false"
                     android:text="South East Asia"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/white"
                 android:hint="Email"
+                android:textColorHint="@color/valorant_red1"
                 android:layout_marginBottom="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tv_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:focusable="false"
+                    android:clickable="false"
                     android:text="ciriusly6@gmail.com"/>
             </com.google.android.material.textfield.TextInputLayout>
             <Button
                 android:id="@+id/btn_update"
                 android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Update Info"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp"/>
+
+            <Button
+                android:id="@+id/btn_changepassword"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Update"
-                android:layout_marginBottom="12dp"
-                android:background="@color/white"/>
+                android:text="Change Password"
+                android:layout_marginBottom="12dp"/>
 
             <Button
                 android:id="@+id/btn_signout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Sign Out"
-                android:background="@color/white"/>
+                android:layout_gravity="bottom"
+                android:text="Sign Out"/>
 
         </LinearLayout>
 

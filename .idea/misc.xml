@@ -7,6 +7,7 @@
         <entry key="..\:/Users/User/Desktop/ValorantCompanionApp/app/src/main/res/drawable/custom_email.xml" value="0.1" />
         <entry key="..\:/Users/User/Desktop/ValorantCompanionApp/app/src/main/res/drawable/custom_input.xml" value="0.1" />
         <entry key="..\:/Users/User/Desktop/ValorantCompanionApp/app/src/main/res/drawable/custom_lock.xml" value="0.1" />
+        <entry key="..\:/Users/User/Desktop/ValorantCompanionApp/app/src/main/res/drawable/dynamic_rv_bg.xml" value="0.1" />
         <entry key="..\:/Users/User/Desktop/ValorantCompanionApp/app/src/main/res/drawable/ic_account.xml" value="0.2518518518518518" />
         <entry key="..\:/Users/User/Desktop/ValorantCompanionApp/app/src/main/res/drawable/ic_account_focused.xml" value="0.1" />
         <entry key="..\:/Users/User/Desktop/ValorantCompanionApp/app/src/main/res/drawable/ic_baseline_account_box_24.xml" value="0.1" />
@@ -17,15 +18,17 @@
         <entry key="..\:/Users/User/Desktop/ValorantCompanionApp/app/src/main/res/drawable/ic_lock.xml" value="0.1" />
         <entry key="..\:/Users/User/Desktop/ValorantCompanionApp/app/src/main/res/drawable/ic_lock_focused.xml" value="0.1" />
         <entry key="..\:/Users/User/Desktop/ValorantCompanionApp/app/src/main/res/layout/a.xml" value="0.264" />
+        <entry key="..\:/Users/User/Desktop/ValorantCompanionApp/app/src/main/res/layout/activity_editprofile.xml" value="0.2" />
         <entry key="..\:/Users/User/Desktop/ValorantCompanionApp/app/src/main/res/layout/activity_home.xml" value="0.2" />
-        <entry key="..\:/Users/User/Desktop/ValorantCompanionApp/app/src/main/res/layout/activity_login.xml" value="0.264" />
+        <entry key="..\:/Users/User/Desktop/ValorantCompanionApp/app/src/main/res/layout/activity_login.xml" value="0.176" />
         <entry key="..\:/Users/User/Desktop/ValorantCompanionApp/app/src/main/res/layout/activity_main.xml" value="0.275" />
         <entry key="..\:/Users/User/Desktop/ValorantCompanionApp/app/src/main/res/layout/activity_match.xml" value="0.264" />
         <entry key="..\:/Users/User/Desktop/ValorantCompanionApp/app/src/main/res/layout/activity_match_specific.xml" value="0.264" />
-        <entry key="..\:/Users/User/Desktop/ValorantCompanionApp/app/src/main/res/layout/activity_profile.xml" value="0.4" />
+        <entry key="..\:/Users/User/Desktop/ValorantCompanionApp/app/src/main/res/layout/activity_profile.xml" value="0.264" />
         <entry key="..\:/Users/User/Desktop/ValorantCompanionApp/app/src/main/res/layout/activity_profile_info.xml" value="0.21965579710144928" />
-        <entry key="..\:/Users/User/Desktop/ValorantCompanionApp/app/src/main/res/layout/activity_register.xml" value="0.2" />
+        <entry key="..\:/Users/User/Desktop/ValorantCompanionApp/app/src/main/res/layout/activity_register.xml" value="0.264" />
         <entry key="..\:/Users/User/Desktop/ValorantCompanionApp/app/src/main/res/layout/activity_splash.xml" value="0.275" />
+        <entry key="..\:/Users/User/Desktop/ValorantCompanionApp/app/src/main/res/layout/activity_tips_tricks.xml" value="0.275" />
         <entry key="..\:/Users/User/Desktop/ValorantCompanionApp/app/src/main/res/layout/dynamic_rv_item_layout.xml" value="0.21965579710144928" />
         <entry key="..\:/Users/User/Desktop/ValorantCompanionApp/app/src/main/res/layout/item_matchcard.xml" value="0.264" />
         <entry key="..\:/Users/User/Desktop/ValorantCompanionApp/app/src/main/res/layout/main_fragment.xml" value="0.275" />

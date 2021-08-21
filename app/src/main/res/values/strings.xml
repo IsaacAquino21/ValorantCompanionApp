@@ -8,7 +8,8 @@
     <string name="reg_register">Register!</string>
     <string name="reg_riotid">RiotId: (e.g. ValorantUser123)</string>
     <string name="reg_tagline">Tagline: (e.g. #1234)</string>
-    <string-array name="reg_rank">
+
+    <string-array name="ranks">
         <item>Rank</item>
         <item>Unranked</item>
         <item>Iron 1</item>
@@ -29,17 +30,36 @@
         <item>Diamond 1</item>
         <item>Diamond 2</item>
         <item>Diamond 3</item>
-        <item>Immortal 1</item>
-        <item>Immortal 2</item>
-        <item>Immortal 3</item>
+        <item>Immortal</item>
         <item>Radiant</item>
     </string-array>
-    <string-array name="reg_regions">
+
+    <string-array name="regions">
         <item>Region</item>
         <item>SEA</item>
         <item>EMEA</item>
         <item>NA</item>
         <item>OCEANIA</item>
+    </string-array>
+
+    <string-array name="agents">
+        <item>Main Agent</item>
+        <item>Brimstone</item>
+        <item>Phoenix</item>
+        <item>Sage</item>
+        <item>Sova</item>
+        <item>Viper</item>
+        <item>Cypher</item>
+        <item>Reyna</item>
+        <item>Killjoy</item>
+        <item>Breach</item>
+        <item>Omen</item>
+        <item>Jett</item>
+        <item>Raze</item>
+        <item>Skye</item>
+        <item>Yoru</item>
+        <item>Astra</item>
+        <item>Kay/o</item>
     </string-array>
 
 
