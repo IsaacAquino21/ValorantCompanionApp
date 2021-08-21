@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginBottom="8dp"
@@ -65,7 +64,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:text="AGENT ABILITIES"
-    android:textSize="45dp"
+    android:textSize="45sp"
     android:textAlignment="center"
     android:layout_marginTop="@dimen/cardview_compat_inset_shadow"
     android:textColor="@color/white"/>
@@ -93,9 +92,9 @@
                     android:layout_toRightOf="@+id/cage"
                     android:text="INSTANTLY toss the cyber cage in front of Cypher. ACTIVATE to create a zone that blocks vision and plays an audio cue when enemies pass through it."
                     android:textColor="@color/white"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
                     android:layout_marginBottom="10dp"
                     />
             </LinearLayout>
@@ -120,7 +119,7 @@
                 android:layout_toRightOf="@+id/cam"
                 android:text="EQUIP a spycam. FIRE to place the spycam at the targeted location. RE-USE this ability to take control of the camera's view. While in control of the camera, FIRE to shoot a marking dart. This dart will reveal the location of any player struck by the dart."
                 android:textColor="@color/white"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginBottom="10dp"
@@ -138,20 +137,19 @@
                 android:id="@+id/trip"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:src="@drawable/trapwire"
+                android:src="@drawable/cypher_trapwire"
                 android:layout_marginLeft="30dp"
                 android:layout_below="@id/cam"/>
-                />
 
             <TextView
                 android:id="@+id/tv_trip"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/cam"
+                android:layout_toEndOf="@+id/cam"
                 android:text="
 EQUIP a trapwire. FIRE to place a destructible and covert tripwire at the targeted location, creating a line that spans between the placed location and the wall opposite."
                 android:textColor="@color/white"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginBottom="10dp"
@@ -169,7 +167,7 @@ EQUIP a trapwire. FIRE to place a destructible and covert tripwire at the target
                 android:id="@+id/ult"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:src="@drawable/cypher_neural"
+                android:src="@drawable/cypher_neural_theft"
                 android:layout_marginLeft="30dp"
                 android:layout_below="@id/trip"/>
             <TextView
@@ -180,7 +178,7 @@ EQUIP a trapwire. FIRE to place a destructible and covert tripwire at the target
                 android:text="
 INSTANTLY use on a dead enemy player in your crosshairs to reveal the location of all living enemy players."
                 android:textColor="@color/white"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginBottom="10dp"
@@ -194,7 +192,7 @@ INSTANTLY use on a dead enemy player in your crosshairs to reveal the location o
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="AGENT TIPS AND TRICKS"
-            android:textSize="45dp"
+            android:textSize="45sp"
             android:textAlignment="center"
             android:layout_marginTop="@dimen/cardview_compat_inset_shadow"
             android:textColor="@color/white"/>
@@ -212,7 +210,7 @@ INSTANTLY use on a dead enemy player in your crosshairs to reveal the location o
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="First Tip"
-            android:textSize="45dp"
+            android:textSize="45sp"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="@dimen/cardview_compat_inset_shadow"
             android:textColor="@color/white"/>
@@ -220,7 +218,7 @@ INSTANTLY use on a dead enemy player in your crosshairs to reveal the location o
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Always keep your trip wires at waist level so enemies who want to flank cannot jump or crouch under them"
-            android:textSize="30dp"
+            android:textSize="30sp"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="@dimen/cardview_compat_inset_shadow"
             android:textColor="@color/white"/>
@@ -238,16 +236,16 @@ INSTANTLY use on a dead enemy player in your crosshairs to reveal the location o
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Second Tip"
-            android:textSize="45dp"
-            android:layout_marginLeft="5dp"
+            android:textSize="45sp"
+            android:layout_marginStart="5dp"
             android:layout_marginTop="@dimen/cardview_compat_inset_shadow"
             android:textColor="@color/white"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Make sure utilize your smokes properly on both attacking and defending. When attacking use it to cover your opponents line of fire. While on defending use it to delay the push of enemies"
-            android:textSize="30dp"
-            android:layout_marginLeft="5dp"
+            android:textSize="30sp"
+            android:layout_marginStart="5dp"
             android:layout_marginTop="@dimen/cardview_compat_inset_shadow"
             android:textColor="@color/white"/>
         <pl.droidsonroids.gif.GifImageView
@@ -264,16 +262,16 @@ INSTANTLY use on a dead enemy player in your crosshairs to reveal the location o
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Third Tip"
-            android:textSize="45dp"
-            android:layout_marginLeft="5dp"
+            android:textSize="45sp"
+            android:layout_marginStart="5dp"
             android:layout_marginTop="@dimen/cardview_compat_inset_shadow"
             android:textColor="@color/white"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Your camera is an essential skilL for BOTH offense and defense. Always use it to watch for flanks on attacking. On defending make sure to position it on places where enemies cannot destroy it easily"
-            android:textSize="30dp"
-            android:layout_marginLeft="5dp"
+            android:text="Your camera is an essential skill for BOTH offense and defense. Always use it to watch for flanks on attacking. On defending make sure to position it on places where enemies cannot destroy it easily"
+            android:textSize="30sp"
+            android:layout_marginStart="5dp"
             android:layout_marginTop="@dimen/cardview_compat_inset_shadow"
             android:textColor="@color/white"/>
     </LinearLayout>
