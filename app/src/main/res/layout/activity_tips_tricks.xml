@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="8dp"
+    android:background="@drawable/agent_tips_new_bg">
+
+    <LinearLayout
+        android:id="@+id/ll_agent_gif"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/postImageIv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+            android:src="@drawable/cypher_tips_tricks"
+            android:padding="10dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:gravity="start"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/postImageIv">
+
+            <LinearLayout
+                android:id="@+id/captionHll"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="4dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/captionUsernameTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cypher"
+                    android:textSize="45sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/dateTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Cypher is a Valorant character that uses a network of spy gadgets to gather intelligence for his team and catch enemies in traps."
+                android:textSize="25sp"
+                android:textColor="@color/white"/>
+
+        </LinearLayout>
+        <TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="AGENT ABILITIES"
+    android:textSize="45dp"
+    android:textAlignment="center"
+    android:layout_marginTop="@dimen/cardview_compat_inset_shadow"
+    android:textColor="@color/white"/>
+        <RelativeLayout
+            android:id="@+id/agent_skills"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/first"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <ImageView
+                    android:id="@+id/cage"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/cypher_cage"
+                    android:layout_marginLeft="30dp"/>
+                <TextView
+                    android:id="@+id/tv_cage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/cage"
+                    android:text="INSTANTLY toss the cyber cage in front of Cypher. ACTIVATE to create a zone that blocks vision and plays an audio cue when enemies pass through it."
+                    android:textColor="@color/white"
+                    android:textSize="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginBottom="10dp"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/second"
+                android:layout_below="@+id/first"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/cam"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/cypher_spycam"
+                android:layout_marginLeft="30dp"
+                android:layout_below="@id/cage"
+                />
+            <TextView
+                android:id="@+id/tv_cam"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/cam"
+                android:text="EQUIP a spycam. FIRE to place the spycam at the targeted location. RE-USE this ability to take control of the camera's view. While in control of the camera, FIRE to shoot a marking dart. This dart will reveal the location of any player struck by the dart."
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginBottom="10dp"
+                android:layout_below="@id/tv_cage"
+                />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/third"
+                android:layout_below="@id/second"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/trip"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/trapwire"
+                android:layout_marginLeft="30dp"
+                android:layout_below="@id/cam"/>
+                />
+
+            <TextView
+                android:id="@+id/tv_trip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/cam"
+                android:text="
+EQUIP a trapwire. FIRE to place a destructible and covert tripwire at the targeted location, creating a line that spans between the placed location and the wall opposite."
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginBottom="10dp"
+                android:layout_below="@id/tv_cam"
+                />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/fourth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/third">
+            <ImageView
+                android:id="@+id/ult"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/cypher_neural"
+                android:layout_marginLeft="30dp"
+                android:layout_below="@id/trip"/>
+            <TextView
+                android:id="@+id/tv_ult"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/cam"
+                android:text="
+INSTANTLY use on a dead enemy player in your crosshairs to reveal the location of all living enemy players."
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginBottom="10dp"
+                android:layout_below="@id/tv_trip"
+                /></LinearLayout>
+
+
+
+        </RelativeLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="AGENT TIPS AND TRICKS"
+            android:textSize="45dp"
+            android:textAlignment="center"
+            android:layout_marginTop="@dimen/cardview_compat_inset_shadow"
+            android:textColor="@color/white"/>
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/gif_trip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+            android:src="@drawable/tip_tripwire"
+            android:padding="10dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="First Tip"
+            android:textSize="45dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="@dimen/cardview_compat_inset_shadow"
+            android:textColor="@color/white"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Always keep your trip wires at waist level so enemies who want to flank cannot jump or crouch under them"
+            android:textSize="30dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="@dimen/cardview_compat_inset_shadow"
+            android:textColor="@color/white"/>
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/gif_cage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+            android:src="@drawable/gif_cage"
+            android:padding="10dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Second Tip"
+            android:textSize="45dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="@dimen/cardview_compat_inset_shadow"
+            android:textColor="@color/white"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Make sure utilize your smokes properly on both attacking and defending. When attacking use it to cover your opponents line of fire. While on defending use it to delay the push of enemies"
+            android:textSize="30dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="@dimen/cardview_compat_inset_shadow"
+            android:textColor="@color/white"/>
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/gif_cam"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+            android:src="@drawable/gif_cam"
+            android:padding="10dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Third Tip"
+            android:textSize="45dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="@dimen/cardview_compat_inset_shadow"
+            android:textColor="@color/white"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Your camera is an essential skilL for BOTH offense and defense. Always use it to watch for flanks on attacking. On defending make sure to position it on places where enemies cannot destroy it easily"
+            android:textSize="30dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="@dimen/cardview_compat_inset_shadow"
+            android:textColor="@color/white"/>
+    </LinearLayout>
+
+
+
+
+
+
+
+
+</ScrollView>
