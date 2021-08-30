@@ -7,6 +7,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="dark_blue">#152238</color>
     <color name="valorant_splash">#0f1823</color>
     <color name = "valorant_red1">#fa4454</color>
     <color name = "valorant_red2">#dc3d4b</color>
@@ -16,5 +17,5 @@
     <color name = "valorant_pink">#b38c8f</color>
     <color name = "valorant_blue">#364966</color>
 
-
+    #dc3d4b
 </resources>

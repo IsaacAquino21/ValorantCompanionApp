@@ -22,11 +22,19 @@ public class HomeActivity extends AppCompatActivity {
         //hide action bar
         Objects.requireNonNull(getSupportActionBar()).hide();
 
-        binding.btnProfile.setOnClickListener(new View.OnClickListener() {
+        binding.cvProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, ProfileActivity.class);
-                startActivity(intent);
+                Intent profile = new Intent(HomeActivity.this, ProfileActivity.class);
+                startActivity(profile);
+            }
+        });
+
+        binding.cvDictionary.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent dictionary = new Intent(HomeActivity.this, DictionaryActivity.class);
+                startActivity(dictionary);
             }
         });
 

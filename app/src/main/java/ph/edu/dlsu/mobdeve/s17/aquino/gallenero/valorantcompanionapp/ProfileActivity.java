@@ -30,9 +30,6 @@ import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.utils.User;
 public class ProfileActivity extends AppCompatActivity{
     private ActivityProfileBinding binding;
     private FirebaseAuth mAuth;
-    private User user;
-    private ArrayList<String> agents;
-    private ArrayList<String> ranks;
 
     //launcher for EditProfileActivity
     private ActivityResultLauncher<Intent> launchEdit =
@@ -74,10 +71,6 @@ public class ProfileActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         binding = ActivityProfileBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        agents = new ArrayList<>();
-        initializeAgents();
-        ranks = new ArrayList<>();
-        initializeRanks();
 
         //hide action bar
         Objects.requireNonNull(getSupportActionBar()).hide();
@@ -119,51 +112,9 @@ public class ProfileActivity extends AppCompatActivity{
                 mAuth.signOut();
                 Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
-    }
-
-    private void initializeAgents(){
-        agents.add("Brimstone");
-        agents.add("Phoenix");
-        agents.add("Sage");
-        agents.add("Sova");
-        agents.add("Viper");
-        agents.add("Cypher");
-        agents.add("Reyna");
-        agents.add("Killjoy");
-        agents.add("Breach");
-        agents.add("Omen");
-        agents.add("Jett");
-        agents.add("Raze");
-        agents.add("Skye");
-        agents.add("Yoru");
-        agents.add("Astra");
-        agents.add("Kay/o");
-    }
-
-    private void initializeRanks(){
-        ranks.add("Unranked");
-        ranks.add("Iron 1");
-        ranks.add("Iron 2");
-        ranks.add("Iron 3");
-        ranks.add("Bronze 1");
-        ranks.add("Bronze 2");
-        ranks.add("Bronze 3");
-        ranks.add("Silver 1");
-        ranks.add("Silver 2");
-        ranks.add("Silver 3");
-        ranks.add("Gold 1");
-        ranks.add("Gold 1");
-        ranks.add("Gold 1");
-        ranks.add("Platinum 1");
-        ranks.add("Platinum 2");
-        ranks.add("Platinum 3");
-        ranks.add("Diamond 1");
-        ranks.add("Diamond 2");
-        ranks.add("Diamond 3");
-        ranks.add("Immortal");
-        ranks.add("Radiant");
     }
 
     private void setUserInformation(User user){

@@ -41,6 +41,10 @@
         <activity android:name=".EditProfileActivity">
 
         </activity>
+
+        <activity android:name=".DictionaryActivity">
+
+        </activity>
     </application>
 
 </manifest>
