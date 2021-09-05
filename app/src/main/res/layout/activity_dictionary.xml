@@ -15,6 +15,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <TextView
                 android:id="@+id/tv_label"
                 android:layout_width="wrap_content"
@@ -26,12 +27,23 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
-            <EditText
+<!--            <EditText-->
+<!--                android:id="@+id/et_keyword"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="16dp"-->
+<!--                android:background="@drawable/custom_input"-->
+<!--                android:hint=""-->
+<!--                android:inputType="text"-->
+<!--                android:minHeight="48dp"-->
+
+            <AutoCompleteTextView
                 android:id="@+id/et_keyword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/custom_input"
+                android:completionThreshold="1"
                 android:hint="keyword (e.g. team ace)"
                 android:inputType="text"
                 android:minHeight="48dp"
@@ -77,6 +89,8 @@
                         android:layout_marginTop="16dp"
                         android:layout_marginBottom="8dp"
                         android:text="TEAM ACE"
+                        android:paddingStart="4dp"
+                        android:paddingEnd="4dp"
                         android:textSize="48sp"
                         android:textStyle="bold"
                         android:textColor="@color/black"/>
@@ -85,8 +99,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Definition:"
-                        android:paddingStart="4dp"
-                        android:paddingEnd="4dp"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
                         android:textSize="24sp"
                         android:textColor="@color/black"
                         android:textStyle="italic"/>
@@ -97,8 +111,8 @@
                         android:layout_height="wrap_content"
                         android:text="This is when each player on the losing team dies to a different allied player."
                         android:layout_marginBottom="12sp"
-                        android:paddingStart="8dp"
-                        android:paddingEnd="8dp"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
                         android:textSize="20sp"
                         android:textColor="@color/black"/>
                 </LinearLayout>

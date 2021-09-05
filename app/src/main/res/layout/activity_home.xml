@@ -83,7 +83,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_home_book"/>
+                    android:src="@drawable/ic_home_dictionary"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -98,6 +98,7 @@
 
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/cv_agents"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
@@ -119,19 +120,21 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_account_focused"/>
+                    android:src="@drawable/ic_home_agents"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Account"
+                    android:text="Agents"
                     android:textSize="16sp"
+                    android:textStyle="bold"
                     android:textColor="@color/valorant_red1"/>
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/cv_addmatch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
@@ -153,19 +156,21 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_account_focused"/>
+                    android:src="@drawable/ic_home_addmatch"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Account"
-                    android:textSize="16sp"
+                    android:text="Add Record"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
                     android:textColor="@color/valorant_red1"/>
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/cv_match_history"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
@@ -187,19 +192,21 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_account_focused"/>
+                    android:src="@drawable/ic_home_book"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Account"
-                    android:textSize="16sp"
+                    android:text="Match Records"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
                     android:textColor="@color/valorant_red1"/>
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/cv_forum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
@@ -221,13 +228,14 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_account_focused"/>
+                    android:src="@drawable/ic_home_forum"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Account"
+                    android:text="Forum"
                     android:textSize="16sp"
+                    android:textStyle="bold"
                     android:textColor="@color/valorant_red1"/>
             </LinearLayout>
 

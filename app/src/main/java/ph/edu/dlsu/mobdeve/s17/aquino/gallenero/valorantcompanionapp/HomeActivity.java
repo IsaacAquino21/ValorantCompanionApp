@@ -38,6 +38,30 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        binding.cvAddmatch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent add_match = new Intent(HomeActivity.this, AddMatchActivity.class);
+                startActivity(add_match);
+            }
+        });
+
+        binding.cvMatchHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent history = new Intent(HomeActivity.this, MatchHistoryActivity.class);
+                startActivity(history);
+            }
+        });
+
+        binding.cvAgents.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent agents = new Intent(HomeActivity.this, ChooseAgentActivity.class);
+                startActivity(agents);
+            }
+        });
+
     }
 
 

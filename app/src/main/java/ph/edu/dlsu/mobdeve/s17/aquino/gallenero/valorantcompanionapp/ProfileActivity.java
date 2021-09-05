@@ -30,6 +30,7 @@ import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.utils.User;
 public class ProfileActivity extends AppCompatActivity{
     private ActivityProfileBinding binding;
     private FirebaseAuth mAuth;
+    DatabaseReference reference;
 
     //launcher for EditProfileActivity
     private ActivityResultLauncher<Intent> launchEdit =
@@ -79,12 +80,13 @@ public class ProfileActivity extends AppCompatActivity{
         mAuth = FirebaseAuth.getInstance();
 
         //load info from database to view
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
+        this.reference = FirebaseDatabase.getInstance().getReference("Users");
         reference.child(mAuth.getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User profile = snapshot.getValue(User.class);
 
+                //info of user is found
                 if(profile != null){
                     setUserInformation(profile);
                     setAgentIcon(profile.getAgent());
@@ -98,6 +100,7 @@ public class ProfileActivity extends AppCompatActivity{
             }
         });
 
+        //update profile info
         binding.btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -106,6 +109,7 @@ public class ProfileActivity extends AppCompatActivity{
             }
         });
 
+        //signout
         binding.btnSignout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -117,6 +121,7 @@ public class ProfileActivity extends AppCompatActivity{
         });
     }
 
+    //method used to set the information obtained from db to the view
     private void setUserInformation(User user){
         binding.tvRiotid.setText(user.getRiotId());
         binding.tvTagline.setText(user.getTagline());
@@ -126,6 +131,7 @@ public class ProfileActivity extends AppCompatActivity{
         binding.tvEmail.setText(user.getEmail());
     }
 
+    //method used to set the agent icon in the view
     private void setAgentIcon(String agent){
         switch (agent){
             case "Brimstone":
@@ -133,12 +139,15 @@ public class ProfileActivity extends AppCompatActivity{
                     break;
 
             case "Phoenix":
+                binding.ivMainagentPic.setImageResource(R.drawable.agent_phoenix);
                 break;
 
             case "Sage":
+                binding.ivMainagentPic.setImageResource(R.drawable.agent_sage);
                 break;
 
             case "Sova":
+                binding.ivMainagentPic.setImageResource(R.drawable.agent_sova);
                 break;
 
             case "Viper":
@@ -154,6 +163,7 @@ public class ProfileActivity extends AppCompatActivity{
                 break;
 
             case "Killjoy":
+                binding.ivMainagentPic.setImageResource(R.drawable.agent_killjoy);
                 break;
 
             case "Breach":
@@ -161,91 +171,120 @@ public class ProfileActivity extends AppCompatActivity{
                 break;
 
             case "Omen":
+                binding.ivMainagentPic.setImageResource(R.drawable.agent_omen);
                 break;
 
             case "Jett":
+                binding.ivMainagentPic.setImageResource(R.drawable.agent_jett);
                 break;
 
             case "Raze":
+                binding.ivMainagentPic.setImageResource(R.drawable.agent_raze);
                 break;
 
             case "Skye":
+                binding.ivMainagentPic.setImageResource(R.drawable.agent_skye);
                 break;
 
             case "Astra":
+                binding.ivMainagentPic.setImageResource(R.drawable.agent_astra);
                 break;
 
             case "Yoru":
+                binding.ivMainagentPic.setImageResource(R.drawable.agent_yoru);
                 break;
 
             case "Kay/o":
+                binding.ivMainagentPic.setImageResource(R.drawable.agent_kayo);
                 break;
         }
     }
 
+    //method used to set the rank icon in the view
     private void setRankIcon(String rank){
         switch (rank){
             case "Unranked":
+                binding.ivRankPic.setImageResource(R.drawable.no_rank);
                 break;
 
             case "Iron 1":
+                binding.ivRankPic.setImageResource(R.drawable.iron_one);
                 break;
 
             case "Iron 2":
+                binding.ivRankPic.setImageResource(R.drawable.iron_two);
                 break;
 
             case "Iron 3":
+                binding.ivRankPic.setImageResource(R.drawable.iron_three);
                 break;
 
             case "Bronze 1":
+                binding.ivRankPic.setImageResource(R.drawable.bronze_one);
                 break;
 
             case "Bronze 2":
+                binding.ivRankPic.setImageResource(R.drawable.bronze_two);
                 break;
 
             case "Bronze 3":
+                binding.ivRankPic.setImageResource(R.drawable.bronze_three);
                 break;
 
             case "Silver 1":
+                binding.ivRankPic.setImageResource(R.drawable.silver_one);
                 break;
 
             case "Silver 2":
+                binding.ivRankPic.setImageResource(R.drawable.silver_two);
                 break;
 
             case "Silver 3":
+                binding.ivRankPic.setImageResource(R.drawable.silver_three);
                 break;
 
             case "Gold 1":
+                binding.ivRankPic.setImageResource(R.drawable.gold_one);
                 break;
 
             case "Gold 2":
+                binding.ivRankPic.setImageResource(R.drawable.gold_two);
                 break;
 
             case "Gold 3":
+                binding.ivRankPic.setImageResource(R.drawable.gold_three);
                 break;
 
             case "Platinum 1":
+                binding.ivRankPic.setImageResource(R.drawable.plat_one);
                 break;
 
             case "Platinum 2":
+                binding.ivRankPic.setImageResource(R.drawable.plat_two);
                 break;
 
             case "Platinum 3":
+                binding.ivRankPic.setImageResource(R.drawable.plat_three);
                 break;
 
             case "Diamond 1":
+                binding.ivRankPic.setImageResource(R.drawable.dia_one);
                 break;
 
             case "Diamond 2":
+                binding.ivRankPic.setImageResource(R.drawable.dia_two);
                 break;
 
             case "Diamond 3":
+                binding.ivRankPic.setImageResource(R.drawable.dia_three);
                 break;
 
             case "Immortal":
+                binding.ivRankPic.setImageResource(R.drawable.immo_rank);
                 break;
 
             case "Radiant":
+                binding.ivRankPic.setImageResource(R.drawable.radiant_rank);
                 break;
         }
     }

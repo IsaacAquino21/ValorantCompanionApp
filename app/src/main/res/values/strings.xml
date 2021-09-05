@@ -43,7 +43,7 @@
     </string-array>
 
     <string-array name="agents">
-        <item>Main Agent</item>
+        <item>Agent</item>
         <item>Brimstone</item>
         <item>Phoenix</item>
         <item>Sage</item>
@@ -62,10 +62,176 @@
         <item>Kay/o</item>
     </string-array>
 
+    <string-array name="matches">
+        <item>Match Type</item>
+        <item>Unrated</item>
+        <item>Competitive</item>
+        <item>Spike Rush</item>
+        <item>Deathmatch</item>
+        <item>Escalation</item>
+        <item>Replication</item>
+        <item>Snowball Fight</item>
+    </string-array>
+
+    <string-array name="match_results">
+        <item>Match Result</item>
+        <item>WIN</item>
+        <item>LOSE</item>
+        <item>DRAW</item>
+    </string-array>
+
+
+
 
     <!-- contentDescriptions -->
     <string name="icon_desc">Valorant Icon</string>
 
     <string name="match_see"><u>See Details</u></string>
+
+    <!-- Agent Descriptions -->
+    <string name="astra_desc"></string>
+    <string name="astra_ability1"></string>
+    <string name="astra_ability2"></string>
+    <string name="astra_ability3"></string>
+    <string name="astra_ult"></string>
+    <string name="astra_tip1"></string>
+    <string name="astra_tip2"></string>
+    <string name="astra_tip3"></string>
+
+    <string name="breach_desc"></string>
+    <string name="breach_ability1"></string>
+    <string name="breach_ability2"></string>
+    <string name="breach_ability3"></string>
+    <string name="breach_ult"></string>
+    <string name="breach_tip1"></string>
+    <string name="breach_tip2"></string>
+    <string name="breach_tip3"></string>
+
+    <string name="brim_desc"></string>
+    <string name="brim_ability1"></string>
+    <string name="brim_ability2"></string>
+    <string name="brim_ability3"></string>
+    <string name="brim_ult"></string>
+    <string name="brim_tip1"></string>
+    <string name="brim_tip2"></string>
+    <string name="brim_tip3"></string>
+
+    <string name="cypher_desc"></string>
+    <string name="cypher_ability1"></string>
+    <string name="cypher_ability2"></string>
+    <string name="cypher_ability3"></string>
+    <string name="cypher_ult"></string>
+    <string name="cypher_tip1"></string>
+    <string name="cypher_tip2"></string>
+    <string name="cypher_tip3"></string>
+
+    <string name="jett_desc"></string>
+    <string name="jett_ability1"></string>
+    <string name="jett_ability2"></string>
+    <string name="jett_ability3"></string>
+    <string name="jett_ult"></string>
+    <string name="jett_tip1"></string>
+    <string name="jett_tip2"></string>
+    <string name="jett_tip3"></string>
+
+    <string name="kayo_desc"></string>
+    <string name="kayo_ability1"></string>
+    <string name="kayo_ability2"></string>
+    <string name="kayo_ability3"></string>
+    <string name="kayo_ult"></string>
+    <string name="kayo_tip1"></string>
+    <string name="kayo_tip2"></string>
+    <string name="kayo_tip3"></string>
+
+    <string name="killjoy_desc"></string>
+    <string name="killjoy_ability1"></string>
+    <string name="killjoy_ability2"></string>
+    <string name="killjoy_ability3"></string>
+    <string name="killjoy_ult"></string>
+    <string name="killjoy_tip1"></string>
+    <string name="killjoy_tip2"></string>
+    <string name="killjoy_tip3"></string>
+
+    <string name="omen_desc"></string>
+    <string name="omen_ability1"></string>
+    <string name="omen_ability2"></string>
+    <string name="omen_ability3"></string>
+    <string name="omen_ult"></string>
+    <string name="omen_tip1"></string>
+    <string name="omen_tip2"></string>
+    <string name="omen_tip3"></string>
+
+    <string name="phoenix_desc"></string>
+    <string name="phoenix_ability1"></string>
+    <string name="phoenix_ability2"></string>
+    <string name="phoenix_ability3"></string>
+    <string name="phoenix_ult"></string>
+    <string name="phoenix_tip1"></string>
+    <string name="phoenix_tip2"></string>
+    <string name="phoenix_tip3"></string>
+
+    <string name="raze_desc"></string>
+    <string name="raze_ability1"></string>
+    <string name="raze_ability2"></string>
+    <string name="raze_ability3"></string>
+    <string name="raze_ult"></string>
+    <string name="raze_tip1"></string>
+    <string name="raze_tip2"></string>
+    <string name="raze_tip3"></string>
+
+    <string name="reyna_desc"></string>
+    <string name="reyna_ability1"></string>
+    <string name="reyna_ability2"></string>
+    <string name="reyna_ability3"></string>
+    <string name="reyna_ult"></string>
+    <string name="reyna_tip1"></string>
+    <string name="reyna_tip2"></string>
+    <string name="reyna_tip3"></string>
+
+    <string name="sage_desc"></string>
+    <string name="sage_ability1"></string>
+    <string name="sage_ability2"></string>
+    <string name="sage_ability3"></string>
+    <string name="sage_ult"></string>
+    <string name="sage_tip1"></string>
+    <string name="sage_tip2"></string>
+    <string name="sage_tip3"></string>
+
+    <string name="skye_desc"></string>
+    <string name="skye_ability1"></string>
+    <string name="skye_ability2"></string>
+    <string name="skye_ability3"></string>
+    <string name="skye_ult"></string>
+    <string name="skye_tip1"></string>
+    <string name="skye_tip2"></string>
+    <string name="skye_tip3"></string>
+
+    <string name="sova_desc"></string>
+    <string name="sova_ability1"></string>
+    <string name="sova_ability2"></string>
+    <string name="sova_ability3"></string>
+    <string name="sova_ult"></string>
+    <string name="sova_tip1"></string>
+    <string name="sova_tip2"></string>
+    <string name="sova_tip3"></string>
+
+    <string name="viper_desc"></string>
+    <string name="viper_ability1"></string>
+    <string name="viper_ability2"></string>
+    <string name="viper_ability3"></string>
+    <string name="viper_ult"></string>
+    <string name="viper_tip1"></string>
+    <string name="viper_tip2"></string>
+    <string name="viper_tip3"></string>
+
+    <string name="yoru_desc"></string>
+    <string name="yoru_ability1"></string>
+    <string name="yoru_ability2"></string>
+    <string name="yoru_ability3"></string>
+    <string name="yoru_ult"></string>
+    <string name="yoru_tip1"></string>
+    <string name="yoru_tip2"></string>
+    <string name="yoru_tip3"></string>
+
 
 </resources>

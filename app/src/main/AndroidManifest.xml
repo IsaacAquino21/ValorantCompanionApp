@@ -38,6 +38,14 @@
 
         </activity>
 
+        <activity android:name=".MatchSpecificActivity">
+
+        </activity>
+
+        <activity android:name=".AddMatchActivity">
+
+        </activity>
+
         <activity android:name=".EditProfileActivity">
 
         </activity>
@@ -45,6 +53,15 @@
         <activity android:name=".DictionaryActivity">
 
         </activity>
+
+        <activity android:name=".ChooseAgentActivity">
+
+        </activity>
+
+        <activity android:name=".TipsTricksActivity">
+
+        </activity>
+
     </application>
 
 </manifest>

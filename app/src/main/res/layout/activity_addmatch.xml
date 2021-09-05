@@ -3,11 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/valorant_splash"
+    android:background="@drawable/addmatch_bg"
     android:clipToPadding="false"
     android:paddingBottom="12dp"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    tools:context=".RegisterActivity">
+    tools:context=".AddMatchActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,155 +18,143 @@
             android:layout_height="match_parent"
             android:layout_marginBottom="12dp">
 
-            <ImageView
-                android:id="@+id/iv_valorant_ic"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_marginTop = "40dp"
-                android:src="@drawable/valorant_ic"
-                android:contentDescription="Valorant Icon"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                />
-
             <TextView
-                android:id="@+id/tv_register"
+                android:id="@+id/tv_addmatch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/reg_register"
+                android:text="Add a New Match Record"
                 android:textColor="@color/white"
                 android:textSize="32sp"
                 android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@+id/iv_valorant_ic"
+                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
-            <EditText
-                android:id="@+id/et_riotid"
+            <Spinner
+                android:id="@+id/spn_result"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="40dp"
                 android:layout_marginEnd="32dp"
                 android:background="@drawable/custom_input"
-                android:drawableStart="@drawable/custom_account"
-                android:drawablePadding="12dp"
-                android:focusable="true"
-                android:hint="@string/reg_riotid"
-                android:paddingStart="8dp"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:inputType="text"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_register" />
-
-            <EditText
-                android:id="@+id/et_tagline"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginEnd="32dp"
-                android:background="@drawable/custom_input"
-                android:drawableStart="@drawable/custom_account"
-                android:drawablePadding="12dp"
-                android:focusable="true"
-                android:hint="Tagline: (e.g. #0000)"
-                android:paddingStart="8dp"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:inputType="text"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/et_riotid" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_addmatch" />
 
             <Spinner
-                android:id="@+id/spn_rank"
+                android:id="@+id/spn_type"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="40dp"
                 android:layout_marginEnd="32dp"
                 android:background="@drawable/custom_input"
-                android:spinnerMode="dropdown"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/et_tagline" />
+                app:layout_constraintTop_toBottomOf="@+id/spn_result" />
 
             <Spinner
-                android:id="@+id/spn_region"
+                android:id="@+id/spn_agent"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="40dp"
                 android:layout_marginEnd="32dp"
                 android:background="@drawable/custom_input"
-                android:spinnerMode="dropdown"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/spn_rank" />
+                app:layout_constraintTop_toBottomOf="@+id/spn_type"/>
 
             <EditText
-                android:id="@+id/et_email"
+                android:id="@+id/et_kills"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="40dp"
                 android:layout_marginEnd="32dp"
                 android:background="@drawable/custom_input"
-                android:drawableStart="@drawable/custom_email"
-                android:drawablePadding="12dp"
                 android:focusable="true"
-                android:hint="@string/login_email"
-                android:inputType="textEmailAddress"
+                android:hint="Kills"
+                android:paddingStart="8dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:inputType="number"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/spn_agent" />
+
+            <EditText
+                android:id="@+id/et_deaths"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/custom_input"
+                android:focusable="true"
+                android:hint="Deaths"
+                android:paddingStart="8dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:inputType="number"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/et_kills"/>
+
+            <EditText
+                android:id="@+id/et_assists"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/custom_input"
+                android:focusable="true"
+                android:hint="Assists"
+                android:inputType="number"
                 android:paddingStart="8dp"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/spn_region" />
+                app:layout_constraintTop_toBottomOf="@id/et_deaths" />
 
             <EditText
-                android:id="@+id/et_password"
+                android:id="@+id/et_econrating"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="40dp"
                 android:layout_marginEnd="32dp"
                 android:background="@drawable/custom_input"
-                android:drawableStart="@drawable/custom_lock"
-                android:drawablePadding="12dp"
                 android:focusable="true"
-                android:hint="@string/login_password"
-                android:inputType="textPassword"
+                android:hint="Econ Rating"
+                android:inputType="number"
                 android:paddingStart="8dp"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/et_email" />
+                app:layout_constraintTop_toBottomOf="@id/et_assists" />
 
             <EditText
-                android:id="@+id/et_confirmpassword"
+                android:id="@+id/et_averagecombatscore"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="40dp"
                 android:layout_marginEnd="32dp"
                 android:background="@drawable/custom_input"
-                android:drawableStart="@drawable/custom_lock"
-                android:drawablePadding="12dp"
                 android:focusable="true"
-                android:hint="Confirm Password"
-                android:inputType="textPassword"
+                android:hint="Average Combat Score"
+                android:inputType="number"
                 android:paddingStart="8dp"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/et_password" />
+                app:layout_constraintTop_toBottomOf="@id/et_econrating" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_registerbutton"
@@ -175,11 +163,11 @@
                 android:layout_marginStart="40dp"
                 android:layout_marginEnd="40dp"
                 android:layout_marginTop="60dp"
-                android:text="Register"
+                android:text="Add Record"
                 android:textSize="36sp"
                 android:textColor="@color/white"
                 android:background="@color/valorant_red2"
-                app:layout_constraintTop_toBottomOf="@id/et_confirmpassword"
+                app:layout_constraintTop_toBottomOf="@id/et_averagecombatscore"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
 

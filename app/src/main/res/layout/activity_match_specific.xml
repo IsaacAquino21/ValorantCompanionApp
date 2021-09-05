@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MatchSpecific"
+    tools:context=".MatchSpecificActivity"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -20,10 +20,9 @@
             android:layout_centerVertical="true"
             android:src="@drawable/agent_cypher" />
         <TextView
-            android:id="@+id/tv_match_top"
+            android:id="@+id/tv_riotid"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Fried"
             android:textSize="20sp"
             android:textColor="@color/white"
             android:layout_toRightOf="@+id/match_agent_photo"
@@ -33,15 +32,14 @@
             android:layout_marginLeft="10dp"/>
 
         <TextView
-            android:id="@+id/tv_match_top_under"
+            android:id="@+id/tv_tagline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="#JEFF"
             android:textSize="14sp"
             android:textColor="@color/white"
             android:layout_toRightOf="@+id/match_agent_photo"
             android:layout_centerVertical="true"
-            android:layout_below="@id/tv_match_top"
+            android:layout_below="@id/tv_riotid"
             android:includeFontPadding="false"
             android:layout_marginLeft="10dp"/>
 
@@ -59,39 +57,43 @@
             android:layout_height="125dp"
             android:layout_weight="1"
             android:layout_margin="10dp"
-            app:cardBackgroundColor="@color/white"
+            app:cardBackgroundColor="@color/valorant_blue2"
             android:elevation="10dp">
             
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="5dp">
-                
-                
+
+
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
+                    android:layout_marginBottom="4dp"
+                    android:layout_centerHorizontal="true"
                     android:src="@drawable/match_kills"
-                    android:layout_centerHorizontal="true"/>
+                    app:tint="@color/white" />
+
                 <TextView
-                    android:id="@+id/tv_match_kills"
+                    android:id="@+id/tv_match_result"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="12 kills"
-                    android:textStyle="bold"
-                    android:textSize="20sp"
+                    android:layout_centerInParent="true"
                     android:includeFontPadding="false"
-                    android:textColor="@color/black"
-                    android:layout_centerInParent="true"/>
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
                 <TextView
                     android:id="@+id/tv_kills_desc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Match Kills"
-                    android:textSize="14sp"
-                    android:includeFontPadding="false"
+                    android:layout_below="@id/tv_match_result"
                     android:layout_centerInParent="true"
-                    android:layout_below="@id/tv_match_kills"/>
+                    android:includeFontPadding="false"
+                    android:text="Match Result"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
 
             </RelativeLayout>
                 
@@ -102,7 +104,7 @@
             android:layout_height="125dp"
             android:layout_weight="1"
             android:layout_margin="10dp"
-            app:cardBackgroundColor="@color/white"
+            app:cardBackgroundColor="@color/valorant_blue2"
             android:elevation="10dp">
 
             <RelativeLayout
@@ -112,29 +114,33 @@
 
 
                 <ImageView
+                    android:id="@+id/iv_match_icon"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/dia_one"
-                    android:layout_centerHorizontal="true"/>
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="4dp"
+                    android:src="@drawable/match_competitive" />
+
                 <TextView
-                    android:id="@+id/tv_match_rank"
+                    android:id="@+id/tv_match_type"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Diamond 1"
-                    android:textStyle="bold"
-                    android:textSize="20sp"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
                     android:includeFontPadding="false"
-                    android:textColor="@color/black"
-                    android:layout_centerInParent="true"/>
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
                 <TextView
-                    android:id="@+id/tv_rank_desc"
+                    android:id="@+id/tv_match_desc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Current Rank"
+                    android:text="Match Type"
                     android:textSize="14sp"
+                    android:textColor="@color/white"
                     android:includeFontPadding="false"
                     android:layout_centerInParent="true"
-                    android:layout_below="@id/tv_match_rank"/>
+                    android:layout_below="@id/tv_match_type"/>
 
             </RelativeLayout>
 
@@ -145,71 +151,93 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="20dp"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Kills in Match"
+            android:background="@color/white"
+            android:hint="Kills"
+            android:textColorHint="@color/valorant_red1"
             android:layout_marginBottom="10dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tv_kills"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
-                android:text="12 Kills"/>
+                android:background="@color/white"
+                android:focusable="false"
+                android:clickable="false"/>
         </com.google.android.material.textfield.TextInputLayout>
+
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Assists in Match"
+            android:background="@color/white"
+            android:hint="Deaths"
+            android:textColorHint="@color/valorant_red1"
             android:layout_marginBottom="10dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tv_deaths"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
-                android:text="10 Assists"/>
+                android:background="@color/white"
+                android:focusable="false"
+                android:clickable="false"/>
         </com.google.android.material.textfield.TextInputLayout>
+
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Deaths in Match"
+            android:background="@color/white"
+            android:hint="Assists"
+            android:textColorHint="@color/valorant_red1"
             android:layout_marginBottom="10dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tv_assists"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
-                android:text="7 Deaths"/>
+                android:background="@color/white"
+                android:focusable="false"
+                android:clickable="false"/>
         </com.google.android.material.textfield.TextInputLayout>
+
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Average Combat score"
+            android:background="@color/white"
+            android:hint="Average Combat Score"
+            android:textColorHint="@color/valorant_red1"
             android:layout_marginBottom="10dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tv_acs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
-                android:text="168 ACS"/>
+                android:background="@color/white"
+                android:focusable="false"
+                android:clickable="false"/>
         </com.google.android.material.textfield.TextInputLayout>
+
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Economy Rating"
+            android:background="@color/white"
+            android:hint="Econ Rating"
+            android:textColorHint="@color/valorant_red1"
             android:layout_marginBottom="10dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tv_ecr"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
-                android:text="78 Econ Rating"/>
+                android:background="@color/white"
+                android:focusable="false"
+                android:clickable="false"/>
         </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>
-
 
 </LinearLayout>

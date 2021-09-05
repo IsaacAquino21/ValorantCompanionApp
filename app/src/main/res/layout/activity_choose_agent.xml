@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/black"
+    android:clipToPadding="false"
+    android:padding="10dp"
+    tools:context=".ChooseAgentActivity">
+
+    <ImageView
+        android:id="@+id/iv_agent"
+        android:layout_width="360dp"
+        android:layout_height="360dp"
+        android:src="@drawable/agent_cypher"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/tv_agent_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cypher"
+        android:textColor="@color/white"
+        android:textSize="48sp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/iv_agent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_lock_in"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
+        android:text="Lock In"
+        app:layout_constraintBottom_toTopOf="@id/table_characters"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TableLayout
+        android:id="@+id/table_characters"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TableRow>
+            <!--Astra-->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_astra"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="8dp"
+                app:cardPreventCornerOverlap="true">
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/agent_astra_icon" />
+            </androidx.cardview.widget.CardView>
+
+            <!--breach-->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_breach"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="8dp"
+                app:cardPreventCornerOverlap="true">
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/agent_breach_icon" />
+            </androidx.cardview.widget.CardView>
+
+            <!--brimstone-->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_brimstone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="8dp"
+                app:cardPreventCornerOverlap="true">
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/agent_brimstone_icon" />
+            </androidx.cardview.widget.CardView>
+
+            <!--cypher-->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_cypher"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="8dp"
+                app:cardPreventCornerOverlap="true">
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:padding="10dp"
+                    android:src="@drawable/agent_cypher_icon" />
+            </androidx.cardview.widget.CardView>
+        </TableRow>
+
+        <TableRow>
+            <!--Jett-->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_jett"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:clipToPadding="false"
+                android:padding="10dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="8dp"
+                app:cardPreventCornerOverlap="true">
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/agent_jett_icon" />
+            </androidx.cardview.widget.CardView>
+
+            <!--kayo-->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_kayo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="8dp"
+                app:cardPreventCornerOverlap="true">
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/agent_kayo_icon" />
+            </androidx.cardview.widget.CardView>
+
+            <!--killjoy-->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_killjoy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="8dp"
+                app:cardPreventCornerOverlap="true">
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/agent_killjoy_icon" />
+            </androidx.cardview.widget.CardView>
+
+            <!--omen-->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_omen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="8dp"
+                app:cardPreventCornerOverlap="true">
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/agent_omen_icon" />
+            </androidx.cardview.widget.CardView>
+        </TableRow>
+
+        <TableRow>
+            <!--phoenix-->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_phoenix"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="8dp"
+                app:cardPreventCornerOverlap="true">
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/agent_phoenix_icon" />
+            </androidx.cardview.widget.CardView>
+
+            <!--raze-->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_raze"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="8dp"
+                app:cardPreventCornerOverlap="true">
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/agent_raze_icon" />
+            </androidx.cardview.widget.CardView>
+
+            <!--reyna-->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_reyna"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="8dp"
+                app:cardPreventCornerOverlap="true">
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/agent_reyna_icon" />
+            </androidx.cardview.widget.CardView>
+
+            <!--sage-->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_sage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="8dp"
+                app:cardPreventCornerOverlap="true">
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/agent_sage_icon" />
+            </androidx.cardview.widget.CardView>
+        </TableRow>
+
+        <TableRow>
+            <!--skye-->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_skye"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="8dp"
+                app:cardPreventCornerOverlap="true">
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/agent_skye_icon" />
+            </androidx.cardview.widget.CardView>
+
+            <!--sova-->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_sova"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="8dp"
+                app:cardPreventCornerOverlap="true">
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/agent_sova_icon" />
+            </androidx.cardview.widget.CardView>
+
+            <!--viper-->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_viper"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="8dp"
+                app:cardPreventCornerOverlap="true">
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/agent_viper_icon" />
+            </androidx.cardview.widget.CardView>
+
+            <!--yoru-->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_yoru"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="8dp"
+                app:cardPreventCornerOverlap="true">
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/agent_yoru_icon" />
+            </androidx.cardview.widget.CardView>
+        </TableRow>
+
+    </TableLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

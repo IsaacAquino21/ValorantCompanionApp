@@ -3,8 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_marginBottom="8dp"
-    android:background="@drawable/agent_tips_new_bg">
+    android:background="@drawable/agent_tips_new_bg"
+    tools:context=".TipsTricksActivity">
 
     <LinearLayout
         android:id="@+id/ll_agent_gif"

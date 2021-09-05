@@ -32,6 +32,8 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
     private String region;
     private String email;
     private String password;
+    private int spn_rank_id;
+    private int spn_region_id;
 
     private FirebaseAuth mAuth;
     @Override

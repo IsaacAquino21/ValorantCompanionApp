@@ -88,7 +88,7 @@ public class EditProfileActivity extends AppCompatActivity implements AdapterVie
         this.tagline = "";
         this.rank = "Rank";
         this.region = "Region";
-        this.agent = "Main Agent";
+        this.agent = "Agent";
     }
 
     private void initializeSpinners(){
@@ -156,7 +156,7 @@ public class EditProfileActivity extends AppCompatActivity implements AdapterVie
             return -1;
         }
 
-        else if(this.agent.equals("Main Agent")){
+        else if(this.agent.equals("Agent")){
             Toast.makeText(getApplicationContext(),
                     "Please select a main agent!", Toast.LENGTH_SHORT).show();
             return -1;
