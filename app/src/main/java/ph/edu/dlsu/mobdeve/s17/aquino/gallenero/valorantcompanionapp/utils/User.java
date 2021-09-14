@@ -11,16 +11,7 @@ public class User {
     public User() {
     }
 
-    public User(String riotId, String tagline, String rank, String region, String email) {
-        this.riotId = riotId;
-        this.tagline = tagline;
-        this.rank = rank;
-        this.region = region;
-        this.email = email;
-        this.agent = "Jett";
-    }
-
-    public User(String riotId, String tagline, String rank, String region, String email, String agent) {
+    public User(String riotId, String tagline, String rank, String region, String agent, String email) {
         this.riotId = riotId;
         this.tagline = tagline;
         this.rank = rank;

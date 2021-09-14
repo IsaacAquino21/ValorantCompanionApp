@@ -10,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -21,7 +20,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
 import java.util.Objects;
 
 import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.databinding.ActivityProfileBinding;
@@ -30,7 +28,6 @@ import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.utils.User;
 public class ProfileActivity extends AppCompatActivity{
     private ActivityProfileBinding binding;
     private FirebaseAuth mAuth;
-    DatabaseReference reference;
 
     //launcher for EditProfileActivity
     private ActivityResultLauncher<Intent> launchEdit =
@@ -45,7 +42,7 @@ public class ProfileActivity extends AppCompatActivity{
                                 String tagline = newData.getStringExtra("tagline");
                                 String rank = newData.getStringExtra("rank");
                                 String region = newData.getStringExtra("region");
-                                String email = newData.getStringExtra("email");
+                                String email = mAuth.getCurrentUser().getEmail();
                                 String agent = newData.getStringExtra("agent");
 
                                 //create a new User object
@@ -67,6 +64,26 @@ public class ProfileActivity extends AppCompatActivity{
                             }
                         }
                     });
+
+    private ActivityResultLauncher<Intent> launchEditPassword =
+            registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+                    new ActivityResultCallback<ActivityResult>() {
+                        @Override
+                        public void onActivityResult(ActivityResult result) {
+                            if(result.getResultCode() == RESULT_OK){
+                                Toast.makeText(getApplicationContext(),
+                                        "Successfully changed password!", Toast.LENGTH_SHORT)
+                                        .show();
+                            }
+
+                            else{
+                                Toast.makeText(getApplicationContext(),
+                                        "Password change unsuccessful!", Toast.LENGTH_SHORT)
+                                        .show();
+                            }
+                        }
+                    });
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,7 +97,7 @@ public class ProfileActivity extends AppCompatActivity{
         mAuth = FirebaseAuth.getInstance();
 
         //load info from database to view
-        this.reference = FirebaseDatabase.getInstance().getReference("Users");
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
         reference.child(mAuth.getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -106,6 +123,14 @@ public class ProfileActivity extends AppCompatActivity{
             public void onClick(View v) {
                 Intent gotoUpdate = new Intent(ProfileActivity.this, EditProfileActivity.class);
                 launchEdit.launch(gotoUpdate);
+            }
+        });
+
+        binding.btnChangepassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent gotoNewPassword = new Intent(ProfileActivity.this, ChangePasswordActivity.class);
+                launchEditPassword.launch(gotoNewPassword);
             }
         });
 

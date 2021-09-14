@@ -62,6 +62,14 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        binding.cvForum.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent forum = new Intent(HomeActivity.this, ForumActivity.class);
+                startActivity(forum);
+            }
+        });
+
     }
 
 

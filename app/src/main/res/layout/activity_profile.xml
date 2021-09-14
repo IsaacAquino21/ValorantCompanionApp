@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:padding="20dp"
-            android:background="@drawable/profile_bg">
+            android:background="@drawable/match_top_bg">
 
             <TextView
                 android:id="@+id/tv_riotid"
@@ -24,7 +24,9 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
                 android:includeFontPadding="false"
+                android:text="TestingTheThird"
                 android:textColor="@color/white"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -34,6 +36,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="12sp"
+                android:text="#TEST"
+                android:textStyle="bold"
                 android:textColor="@color/white"
                 android:layout_centerVertical="true"
                 android:layout_below="@id/tv_riotid"
@@ -51,7 +55,7 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="0dp"
-                android:layout_height="125dp"
+                android:layout_height="150dp"
                 android:layout_weight="1"
                 android:layout_margin="10dp"
                 app:cardBackgroundColor="@color/white"
@@ -65,9 +69,9 @@
 
                     <ImageView
                         android:id="@+id/iv_mainagent_pic"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_centerHorizontal="true"/>
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_centerHorizontal="true" />
                     <TextView
                         android:id="@+id/tv_main_agent"
                         android:layout_width="wrap_content"
@@ -94,7 +98,7 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="0dp"
-                android:layout_height="125dp"
+                android:layout_height="150dp"
                 android:layout_weight="1"
                 android:layout_margin="10dp"
                 app:cardBackgroundColor="@color/white"
@@ -105,12 +109,11 @@
                     android:layout_height="match_parent"
                     android:padding="5dp">
 
-
                     <ImageView
                         android:id="@+id/iv_rank_pic"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_centerHorizontal="true"/>
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_centerHorizontal="true" />
                     <TextView
                         android:id="@+id/tv_rank"
                         android:layout_width="wrap_content"
@@ -119,7 +122,8 @@
                         android:textSize="20sp"
                         android:includeFontPadding="false"
                         android:textColor="@color/black"
-                        android:layout_centerInParent="true"/>
+                        android:layout_centerInParent="true"
+                        android:layout_below="@id/iv_rank_pic"/>
                     <TextView
                         android:id="@+id/tv_rank_label"
                         android:layout_width="wrap_content"

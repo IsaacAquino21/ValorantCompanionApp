@@ -3,11 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/valorant_splash"
     android:clipToPadding="false"
     android:paddingBottom="12dp"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    tools:context=".RegisterActivity">
+    tools:context=".EditProfileActivity">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,12 +19,10 @@
             android:layout_marginBottom="12dp">
 
             <ImageView
-                android:id="@+id/iv_valorant_ic"
+                android:id="@+id/iv_editicon"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:layout_marginTop = "40dp"
-                android:src="@drawable/valorant_ic"
-                android:contentDescription="Valorant Icon"
+                android:src="@drawable/ic_account_focused"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -34,11 +32,11 @@
                 android:id="@+id/tv_register"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/reg_register"
-                android:textColor="@color/white"
+                android:text="Update Profile Info"
+                android:textColor="@color/valorant_red1"
                 android:textSize="32sp"
                 android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@+id/iv_valorant_ic"
+                app:layout_constraintTop_toBottomOf="@id/iv_editicon"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -54,10 +52,10 @@
                 android:drawablePadding="12dp"
                 android:focusable="true"
                 android:hint="@string/reg_riotid"
+                android:inputType="text"
                 android:paddingStart="8dp"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                android:inputType="text"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_register" />
@@ -80,7 +78,7 @@
                 android:inputType="text"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/et_riotid" />
+                app:layout_constraintTop_toBottomOf="@id/et_riotid"/>
 
             <Spinner
                 android:id="@+id/spn_rank"
@@ -90,10 +88,9 @@
                 android:layout_marginTop="40dp"
                 android:layout_marginEnd="32dp"
                 android:background="@drawable/custom_input"
-                android:spinnerMode="dropdown"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/et_tagline" />
+                app:layout_constraintTop_toBottomOf="@id/et_tagline"/>
 
             <Spinner
                 android:id="@+id/spn_region"
@@ -103,10 +100,9 @@
                 android:layout_marginTop="40dp"
                 android:layout_marginEnd="32dp"
                 android:background="@drawable/custom_input"
-                android:spinnerMode="dropdown"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/spn_rank" />
+                app:layout_constraintTop_toBottomOf="@id/spn_rank"/>
 
             <Spinner
                 android:id="@+id/spn_agent"
@@ -120,78 +116,18 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/spn_region"/>
 
-            <EditText
-                android:id="@+id/et_email"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginEnd="32dp"
-                android:background="@drawable/custom_input"
-                android:drawableStart="@drawable/custom_email"
-                android:drawablePadding="12dp"
-                android:focusable="true"
-                android:hint="@string/login_email"
-                android:inputType="textEmailAddress"
-                android:paddingStart="8dp"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/spn_agent" />
-
-            <EditText
-                android:id="@+id/et_password"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginEnd="32dp"
-                android:background="@drawable/custom_input"
-                android:drawableStart="@drawable/custom_lock"
-                android:drawablePadding="12dp"
-                android:focusable="true"
-                android:hint="@string/login_password"
-                android:inputType="textPassword"
-                android:paddingStart="8dp"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/et_email" />
-
-            <EditText
-                android:id="@+id/et_confirmpassword"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginEnd="32dp"
-                android:background="@drawable/custom_input"
-                android:drawableStart="@drawable/custom_lock"
-                android:drawablePadding="12dp"
-                android:focusable="true"
-                android:hint="Confirm Password"
-                android:inputType="textPassword"
-                android:paddingStart="8dp"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/et_password" />
-
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_registerbutton"
+                android:id="@+id/btn_update"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
                 android:layout_marginEnd="40dp"
                 android:layout_marginTop="60dp"
-                android:text="Register"
+                android:text="Update Info"
                 android:textSize="36sp"
                 android:textColor="@color/white"
                 android:background="@color/valorant_red2"
-                app:layout_constraintTop_toBottomOf="@id/et_confirmpassword"
+                app:layout_constraintTop_toBottomOf="@id/spn_agent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
 

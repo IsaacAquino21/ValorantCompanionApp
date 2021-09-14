@@ -2,9 +2,7 @@ package ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Patterns;
 import android.view.View;
-import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
@@ -20,7 +18,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Objects;
 
-import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.databinding.ActivityEditprofileBinding;
+import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.databinding.ActivityEditProfileBinding;
 import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.utils.User;
 
 public class EditProfileActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
@@ -29,12 +27,13 @@ public class EditProfileActivity extends AppCompatActivity implements AdapterVie
     private String rank;
     private String region;
     private String agent;
-    private ActivityEditprofileBinding binding;
+    private ActivityEditProfileBinding binding;
     private FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityEditprofileBinding.inflate(getLayoutInflater());
+        binding = ActivityEditProfileBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         //hide action bar
@@ -43,7 +42,7 @@ public class EditProfileActivity extends AppCompatActivity implements AdapterVie
         //Set background of view
         getWindow().setBackgroundDrawableResource(R.drawable.editprofile_bg);
 
-        //initialize FirebaseAuth
+        //initialize firebase auth
         mAuth = FirebaseAuth.getInstance();
 
         initializeSpinners();
@@ -55,8 +54,9 @@ public class EditProfileActivity extends AppCompatActivity implements AdapterVie
                 int result = validAccountDetails();
 
                 if(result ==0){
-                    updateInfo();
+                    updateUser();
                 }
+
             }
         });
     }
@@ -167,39 +167,37 @@ public class EditProfileActivity extends AppCompatActivity implements AdapterVie
         return 0;
     }
 
-    private void updateInfo(){
+    private void updateUser(){
         String riotId = binding.etRiotid.getText().toString().trim();
         String tagline = binding.etTagline.getText().toString().trim();
-        String rank = this.rank;
-        String region = this.region;
-        String agent = this.agent;
         String email = mAuth.getCurrentUser().getEmail();
-        User info = new User(riotId,tagline,rank,region,email,agent);
+        User info = new User(riotId, tagline, rank, region, agent, email);
 
         FirebaseDatabase.getInstance().getReference("Users")
                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(info)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if(task.isSuccessful()){
-                    Intent data = new Intent();
-                    data.putExtra("riotId", riotId);
-                    data.putExtra("tagline", tagline);
-                    data.putExtra("rank", rank);
-                    data.putExtra("region", region);
-                    data.putExtra("agent", agent);
-                    data.putExtra("email", email);
-                    setResult(RESULT_OK, data);
-                    finish();
-                }
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Intent data = new Intent();
+                            data.putExtra("riotId", riotId);
+                            data.putExtra("tagline", tagline);
+                            data.putExtra("rank", rank);
+                            data.putExtra("region", region);
+                            data.putExtra("agent", agent);
+                            setResult(RESULT_OK, data);
+                            finish();
+                        }
 
-                else{
-                    Toast.makeText(getApplicationContext(), "There was a problem in updating your data",
-                            Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+                        else {
+                           Toast.makeText(getApplicationContext(),
+                                   "There was a problem updating your profile info",
+                                   Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
+
     }
-
 
 }

@@ -2,7 +2,9 @@ package ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
@@ -23,17 +25,47 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.adapters.MatchHistoryAdapter;
-import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.databinding.ActivityMatchBinding;
-import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.utils.DataHelper;
+import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.databinding.ActivityMatchHistoryBinding;
 import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.utils.MatchRecord;
 import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.utils.User;
 
 public class MatchHistoryActivity extends AppCompatActivity {
-    private ActivityMatchBinding binding;
+    private ActivityMatchHistoryBinding binding;
     private ArrayList<MatchRecord> matchRecords;
     private MatchHistoryAdapter matchHistoryAdapter;
     private MatchHistoryAdapter.ItemClickListener listener;
     private User user;
+    private boolean noMatchFlag = true;
+
+    private DatabaseReference Recordsreference = FirebaseDatabase.getInstance()
+            .getReference("Match Records");
+
+    private ValueEventListener matchRecordlistener = new ValueEventListener() {
+        @Override
+        public void onDataChange(@NonNull DataSnapshot snapshot) {
+            if(snapshot.exists()){
+                noMatchFlag = false;
+                showRecyclerView();
+                matchRecords.clear();
+
+                for (DataSnapshot dataSnapshot: snapshot.getChildren()){
+                    MatchRecord matchRecord = dataSnapshot.getValue(MatchRecord.class);
+                    matchRecords.add(0,matchRecord);
+                }
+                matchHistoryAdapter.notifyDataSetChanged();
+            }
+
+            else{
+                hideRecyclerView();
+            }
+        }
+
+        @Override
+        public void onCancelled(@NonNull DatabaseError error) {
+
+        }
+    };
+
 
 
     private ActivityResultLauncher<Intent> launchAddMatch =
@@ -41,21 +73,15 @@ public class MatchHistoryActivity extends AppCompatActivity {
                     new ActivityResultCallback<ActivityResult>() {
                         @Override
                         public void onActivityResult(ActivityResult result) {
-                            if(result.getResultCode() == 1){
-                                Intent data = result.getData();
+                            if (result.getResultCode() == 1) {
+                                if(noMatchFlag = true){
+                                        noMatchFlag = false;
+                                        showRecyclerView();
+                                }
 
-                                String agent = data.getStringExtra("agent");
-                                String type = data.getStringExtra("type");
-                                String matchResult = data.getStringExtra("matchResult");
-                                int kills = data.getIntExtra("kills", 0);
-                                int deaths = data.getIntExtra("deaths", 0);
-                                int assists = data.getIntExtra("assists", 0);
-                                int econRating = data.getIntExtra("econRating", 0);
-                                int averageCombatScore = data.getIntExtra("averageCombatScore", 0);
-
-                                MatchRecord matchRecord = new MatchRecord(agent, type, matchResult, kills, deaths, assists, econRating, averageCombatScore);
-                                matchHistoryAdapter.addMatch(matchRecord);
-                                binding.rvView.smoothScrollToPosition(0);
+                                Toast.makeText(getApplicationContext(),
+                                        "Successfully Added Record",
+                                        Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
@@ -63,52 +89,42 @@ public class MatchHistoryActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityMatchBinding.inflate(getLayoutInflater());
+        binding = ActivityMatchHistoryBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         //replace the text on action bar
         getSupportActionBar().setTitle("Match History");
 
-        DataHelper dataHelper = new DataHelper();
-
-        matchRecords = dataHelper.getMatches();
-
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
-        reference.child(mAuth.getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                User profile = snapshot.getValue(User.class);
-
-                //info of user is found
-                if(profile != null){
-                    setUser(profile);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
+        matchRecords = new ArrayList<>();
+        getUser();
         setOnClickListener();
+        getMatches();
         matchHistoryAdapter = new MatchHistoryAdapter(matchRecords, listener);
         binding.rvView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         binding.rvView.setAdapter(matchHistoryAdapter);
 
         binding.btnAddmatch.setOnClickListener(v -> {
             Intent gotoAddMatch = new Intent(MatchHistoryActivity.this, AddMatchActivity.class);
+            gotoAddMatch.putExtra("Match Number", matchRecords.size());
             launchAddMatch.launch(gotoAddMatch);
         });
 
 
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        this.Recordsreference.removeEventListener(matchRecordlistener);
+    }
+
+    //allows to click a card and then go to the match specific activity
     private void setOnClickListener(){
         listener = new MatchHistoryAdapter.ItemClickListener() {
             @Override
             public void onClick(View view, int position) {
+
+                Log.i("Econ Rating", matchRecords.get(position).getEconRating() + "");
 
                 Intent intent = new Intent(getApplicationContext(), MatchSpecificActivity.class);
                 intent.putExtra("riotid", user.getRiotId());
@@ -126,42 +142,50 @@ public class MatchHistoryActivity extends AppCompatActivity {
         };
     }
 
+    private void getUser(){
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
+        reference.child(mAuth.getCurrentUser().getUid())
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User profile = snapshot.getValue(User.class);
+
+                //info of user is found
+                if(profile != null){
+                    setUser(profile);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
     private void setUser(User user){
         this.user = user;
     }
 
+    private void getMatches() {
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        Recordsreference.child(mAuth.getCurrentUser().getUid())
+                .addValueEventListener(matchRecordlistener);
+    }
+    private void hideRecyclerView(){
+        binding.rvView.setVisibility(View.GONE);
+        binding.tvNoMatchLabel.setVisibility(View.VISIBLE);
+    }
 
+    private void showRecyclerView(){
+        binding.rvView.setVisibility(View.VISIBLE);
+        binding.tvNoMatchLabel.setVisibility(View.GONE);
+    }
 
-
-
-
-
-
-
-//    DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Users");
-//        reference.addValueEventListener(new ValueEventListener() {
-//        @Override
-//        public void onDataChange(@NonNull DataSnapshot snapshot) {
-//            if(snapshot.hasChildren()){
-//                for (DataSnapshot info: snapshot.getChildren()) {
-//                    Log.i("snapshot key",info.getKey());
-//                    Log.i("Uid", FirebaseAuth.getInstance().getCurrentUser().getUid());
-//                    if(info.getKey().equals(FirebaseAuth.getInstance().getCurrentUser().getUid())){
-//                        User user = info.getValue(User.class);
-//                        setUserInformation(user);
-//                        setAgentIcon(user.getAgent());
-//                        setRankIcon(user.getRank());
-//                        break;
-//                    }
-//
-//                }
-//            }
-//        }
-//
-//        @Override
-//        public void onCancelled(@NonNull DatabaseError error) {
-//
-//        }
-//    });
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 }

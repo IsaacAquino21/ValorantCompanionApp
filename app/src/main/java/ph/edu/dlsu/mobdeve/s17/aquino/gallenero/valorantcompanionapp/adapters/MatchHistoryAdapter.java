@@ -24,11 +24,6 @@ public class MatchHistoryAdapter extends RecyclerView.Adapter<MatchHistoryAdapte
         this.listener = listener;
     }
 
-    public void addMatch(MatchRecord matchRecord){
-        matches.add(0, matchRecord);
-        notifyItemInserted(0);
-    }
-
     @Override
     public MatchHistoryAdapter.MatchViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
@@ -80,7 +75,6 @@ public class MatchHistoryAdapter extends RecyclerView.Adapter<MatchHistoryAdapte
             agent_name = view.findViewById(R.id.tv_rvagent);
             layout = view.findViewById(R.id.rl_layout);
             view.setOnClickListener(this);
-
         }
 
         @Override

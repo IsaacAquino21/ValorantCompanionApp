@@ -30,12 +30,15 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
     private String tagline;
     private String rank;
     private String region;
+    private String agent;
     private String email;
     private String password;
     private int spn_rank_id;
     private int spn_region_id;
 
     private FirebaseAuth mAuth;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,17 +48,18 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
         //hide action bar
         Objects.requireNonNull(getSupportActionBar()).hide();
 
-        //initialize FirebaseAuth
-        mAuth = FirebaseAuth.getInstance();
-
         initializeSpinners();
         initializeAccountDetails();
+
+        this.mAuth = FirebaseAuth.getInstance();
 
         binding.btnRegisterbutton.setOnClickListener(v -> {
             int result = validAccountDetails();
 
-            if(result == 0)
+            if(result == 0) {
                 registerUser();
+            }
+
         });
     }
 
@@ -68,6 +72,10 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 
            case R.id.spn_region:
                 this.region = parent.getItemAtPosition(position).toString();
+                break;
+
+            case R.id.spn_agent:
+                this.agent = parent.getItemAtPosition(position).toString();
                 break;
 
           default:
@@ -86,12 +94,14 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
         this.rank = "Rank";
         this.region = "Region";
         this.password = "";
+        this.agent = "Agent";
     }
 
     private void initializeSpinners(){
         //Initialize spinners for rank and region
         Spinner spinner1 = binding.spnRank;
         Spinner spinner2 = binding.spnRegion;
+        Spinner spinner3 = binding.spnAgent;
 
         //create adapter for spinners
         ArrayAdapter<CharSequence> adapter1 = ArrayAdapter
@@ -102,20 +112,27 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
                 .createFromResource(this,
                         R.array.regions, android.R.layout.simple_spinner_item);
 
+        ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource(this,
+                R.array.agents, android.R.layout.simple_spinner_item);
+
         //setDropDownViewResource of adapters
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         //set adapters of spinners
         spinner1.setAdapter(adapter1);
         spinner2.setAdapter(adapter2);
+        spinner3.setAdapter(adapter3);
 
         //set onItemSelectedListener of spinners
         spinner1.setOnItemSelectedListener(this);
         spinner2.setOnItemSelectedListener(this);
+        spinner3.setOnItemSelectedListener(this);
     }
 
     private int validAccountDetails(){
+        Log.i("Validate", "validating");
         String riotId = binding.etRiotid.getText().toString();
         String tagline = binding.etTagline.getText().toString();
         String email = binding.etEmail.getText().toString();
@@ -174,7 +191,7 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
             return -1;
         }
 
-        else if(this.region.equals("Region")){
+        else if(this.region.equalsIgnoreCase("Region")){
             Toast.makeText(getApplicationContext(),
                     "Please select a region!", Toast.LENGTH_SHORT).show();
             return -1;
@@ -183,6 +200,12 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
         else if(!Patterns.EMAIL_ADDRESS.matcher(email.trim()).matches()){
             binding.etEmail.setError("Please enter valid email!");
             binding.etEmail.requestFocus();
+            return -1;
+        }
+
+        else if(this.agent.equalsIgnoreCase("Agent")){
+            Toast.makeText(getApplicationContext(),
+                    "Please select a main agent!", Toast.LENGTH_SHORT).show();
             return -1;
         }
 
@@ -196,13 +219,15 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
         this.email = binding.etEmail.getText().toString().trim();
         this.password = binding.etPassword.getText().toString().trim();
 
-        this.mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        this.mAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     Log.i("register", "register successful");
-                    User user = new User(riotId, tagline, rank, region, email);
+                    User user = new User(riotId, tagline, rank, region, agent, email);
 
+                    //add to db
                     FirebaseDatabase.getInstance().getReference("Users")
                             .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                             .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -211,20 +236,22 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
                             if(task.isSuccessful()){
                                 Intent intent = new Intent();
                                 setResult(RESULT_OK, intent);
+                                mAuth.signOut();
                                 finish();
                             }
 
+                            //issue with email and password
                             else{
                                 Toast.makeText(getApplicationContext(),
-                                        "Failed to Register User! Database", Toast.LENGTH_SHORT).show();
+                                        "There was an issue adding the user to the database!", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
                 }
-
+                //issue with email and password (createUserWithEmailAndPassword)
                 else{
                     Toast.makeText(getApplicationContext(),
-                            "Failed to Register User! Create User With Email and Password", Toast.LENGTH_SHORT).show();
+                            "There is an issue with the email and/or password", Toast.LENGTH_SHORT).show();
                 }
             }
         });
