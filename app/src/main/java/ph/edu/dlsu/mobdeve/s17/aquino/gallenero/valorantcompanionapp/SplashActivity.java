@@ -5,10 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Objects;
+import java.util.TimeZone;
 
 import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.databinding.ActivitySplashBinding;
 
@@ -33,7 +39,6 @@ public class SplashActivity extends AppCompatActivity{
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-
                 if(mAuth.getCurrentUser() != null){
                     Intent launchHome = new Intent(SplashActivity.this, HomeActivity.class);
                     startActivity(launchHome);
@@ -45,7 +50,6 @@ public class SplashActivity extends AppCompatActivity{
                     startActivity(launchLogin);
                     finish();
                 }
-
             }
         }, TIME_DELAY);
 

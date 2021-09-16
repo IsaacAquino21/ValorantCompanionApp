@@ -23,7 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.Objects;
 
 import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.databinding.ActivityProfileBinding;
-import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.utils.User;
+import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.models.User;
 
 public class ProfileActivity extends AppCompatActivity{
     private ActivityProfileBinding binding;

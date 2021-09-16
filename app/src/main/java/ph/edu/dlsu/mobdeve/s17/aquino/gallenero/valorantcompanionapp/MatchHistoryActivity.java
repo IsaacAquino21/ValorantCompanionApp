@@ -2,7 +2,6 @@ package ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -26,18 +25,19 @@ import java.util.ArrayList;
 
 import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.adapters.MatchHistoryAdapter;
 import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.databinding.ActivityMatchHistoryBinding;
-import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.utils.MatchRecord;
-import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.utils.User;
+import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.interfaces.ItemClickListener;
+import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.models.MatchRecord;
+import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.models.User;
 
 public class MatchHistoryActivity extends AppCompatActivity {
     private ActivityMatchHistoryBinding binding;
     private ArrayList<MatchRecord> matchRecords;
     private MatchHistoryAdapter matchHistoryAdapter;
-    private MatchHistoryAdapter.ItemClickListener listener;
+    private ItemClickListener listener;
     private User user;
     private boolean noMatchFlag = true;
 
-    private DatabaseReference Recordsreference = FirebaseDatabase.getInstance()
+    private DatabaseReference recordsReference = FirebaseDatabase.getInstance()
             .getReference("Match Records");
 
     private ValueEventListener matchRecordlistener = new ValueEventListener() {
@@ -66,21 +66,25 @@ public class MatchHistoryActivity extends AppCompatActivity {
         }
     };
 
-
-
     private ActivityResultLauncher<Intent> launchAddMatch =
             registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
                     new ActivityResultCallback<ActivityResult>() {
                         @Override
                         public void onActivityResult(ActivityResult result) {
-                            if (result.getResultCode() == 1) {
-                                if(noMatchFlag = true){
+                            if (result.getResultCode() == RESULT_OK) {
+                                if(noMatchFlag == true){
                                         noMatchFlag = false;
                                         showRecyclerView();
                                 }
 
                                 Toast.makeText(getApplicationContext(),
                                         "Successfully Added Record",
+                                        Toast.LENGTH_SHORT).show();
+                            }
+
+                            else{
+                                Toast.makeText(getApplicationContext(),
+                                        "Adding unsuccessful!",
                                         Toast.LENGTH_SHORT).show();
                             }
                         }
@@ -108,25 +112,20 @@ public class MatchHistoryActivity extends AppCompatActivity {
             gotoAddMatch.putExtra("Match Number", matchRecords.size());
             launchAddMatch.launch(gotoAddMatch);
         });
-
-
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        this.Recordsreference.removeEventListener(matchRecordlistener);
+        this.recordsReference.removeEventListener(matchRecordlistener);
     }
 
     //allows to click a card and then go to the match specific activity
     private void setOnClickListener(){
-        listener = new MatchHistoryAdapter.ItemClickListener() {
+        listener = new ItemClickListener() {
             @Override
             public void onClick(View view, int position) {
-
-                Log.i("Econ Rating", matchRecords.get(position).getEconRating() + "");
-
-                Intent intent = new Intent(getApplicationContext(), MatchSpecificActivity.class);
+                Intent intent = new Intent(MatchHistoryActivity.this, MatchSpecificActivity.class);
                 intent.putExtra("riotid", user.getRiotId());
                 intent.putExtra("tagline", user.getTagline());
                 intent.putExtra("agent", matchRecords.get(position).getAgent());
@@ -170,7 +169,7 @@ public class MatchHistoryActivity extends AppCompatActivity {
 
     private void getMatches() {
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        Recordsreference.child(mAuth.getCurrentUser().getUid())
+        recordsReference.child(mAuth.getCurrentUser().getUid())
                 .addValueEventListener(matchRecordlistener);
     }
     private void hideRecyclerView(){

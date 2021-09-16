@@ -22,7 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.Objects;
 
 import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.databinding.ActivityRegisterBinding;
-import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.utils.User;
+import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.models.User;
 
 public class RegisterActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private ActivityRegisterBinding binding;
@@ -214,6 +214,7 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
     }
 
     private void registerUser(){
+        binding.pbProgressBar.setVisibility(View.VISIBLE);
         this.riotId = binding.etRiotid.getText().toString().trim();
         this.tagline = binding.etTagline.getText().toString().trim();
         this.email = binding.etEmail.getText().toString().trim();
@@ -237,11 +238,13 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
                                 Intent intent = new Intent();
                                 setResult(RESULT_OK, intent);
                                 mAuth.signOut();
+                                binding.pbProgressBar.setVisibility(View.GONE);
                                 finish();
                             }
 
                             //issue with email and password
                             else{
+                                binding.pbProgressBar.setVisibility(View.GONE);
                                 Toast.makeText(getApplicationContext(),
                                         "There was an issue adding the user to the database!", Toast.LENGTH_SHORT).show();
                             }
@@ -250,6 +253,7 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
                 }
                 //issue with email and password (createUserWithEmailAndPassword)
                 else{
+                    binding.pbProgressBar.setVisibility(View.GONE);
                     Toast.makeText(getApplicationContext(),
                             "There is an issue with the email and/or password", Toast.LENGTH_SHORT).show();
                 }

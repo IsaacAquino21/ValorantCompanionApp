@@ -1,201 +1,213 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/valorant_splash"
-    android:clipToPadding="false"
-    android:paddingBottom="12dp"
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    tools:context=".RegisterActivity">
-    <LinearLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/valorant_splash"
+    tools:context=".RegisterActivity"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingBottom="12dp">
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="12dp">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/iv_valorant_ic"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_marginTop = "40dp"
-                android:src="@drawable/valorant_ic"
-                android:contentDescription="Valorant Icon"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                />
-
-            <TextView
-                android:id="@+id/tv_register"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/reg_register"
-                android:textColor="@color/white"
-                android:textSize="32sp"
-                android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@+id/iv_valorant_ic"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
-
-            <EditText
-                android:id="@+id/et_riotid"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginEnd="32dp"
-                android:background="@drawable/custom_input"
-                android:drawableStart="@drawable/custom_account"
-                android:drawablePadding="12dp"
-                android:focusable="true"
-                android:hint="@string/reg_riotid"
-                android:paddingStart="8dp"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:inputType="text"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_register" />
+                android:layout_height="match_parent"
+                android:layout_marginBottom="12dp">
 
-            <EditText
-                android:id="@+id/et_tagline"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginEnd="32dp"
-                android:background="@drawable/custom_input"
-                android:drawableStart="@drawable/custom_account"
-                android:drawablePadding="12dp"
-                android:focusable="true"
-                android:hint="Tagline: (e.g. #0000)"
-                android:paddingStart="8dp"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:inputType="text"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/et_riotid" />
+                <ImageView
+                    android:id="@+id/iv_valorant_ic"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginTop = "40dp"
+                    android:src="@drawable/valorant_ic"
+                    android:contentDescription="Valorant Icon"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    />
 
-            <Spinner
-                android:id="@+id/spn_rank"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginEnd="32dp"
-                android:background="@drawable/custom_input"
-                android:spinnerMode="dropdown"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/et_tagline" />
+                <TextView
+                    android:id="@+id/tv_register"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/reg_register"
+                    android:textColor="@color/white"
+                    android:textSize="32sp"
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_valorant_ic"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
 
-            <Spinner
-                android:id="@+id/spn_region"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginEnd="32dp"
-                android:background="@drawable/custom_input"
-                android:spinnerMode="dropdown"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/spn_rank" />
+                <EditText
+                    android:id="@+id/et_riotid"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginEnd="32dp"
+                    android:background="@drawable/custom_input"
+                    android:drawableStart="@drawable/custom_account"
+                    android:drawablePadding="12dp"
+                    android:focusable="true"
+                    android:hint="@string/reg_riotid"
+                    android:paddingStart="8dp"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:inputType="text"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_register" />
 
-            <Spinner
-                android:id="@+id/spn_agent"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginEnd="32dp"
-                android:background="@drawable/custom_input"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/spn_region"/>
+                <EditText
+                    android:id="@+id/et_tagline"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginEnd="32dp"
+                    android:background="@drawable/custom_input"
+                    android:drawableStart="@drawable/custom_account"
+                    android:drawablePadding="12dp"
+                    android:focusable="true"
+                    android:hint="Tagline: (e.g. #0000)"
+                    android:paddingStart="8dp"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:inputType="text"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/et_riotid" />
 
-            <EditText
-                android:id="@+id/et_email"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginEnd="32dp"
-                android:background="@drawable/custom_input"
-                android:drawableStart="@drawable/custom_email"
-                android:drawablePadding="12dp"
-                android:focusable="true"
-                android:hint="@string/login_email"
-                android:inputType="textEmailAddress"
-                android:paddingStart="8dp"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/spn_agent" />
+                <Spinner
+                    android:id="@+id/spn_rank"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginEnd="32dp"
+                    android:background="@drawable/custom_input"
+                    android:spinnerMode="dropdown"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/et_tagline" />
 
-            <EditText
-                android:id="@+id/et_password"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginEnd="32dp"
-                android:background="@drawable/custom_input"
-                android:drawableStart="@drawable/custom_lock"
-                android:drawablePadding="12dp"
-                android:focusable="true"
-                android:hint="@string/login_password"
-                android:inputType="textPassword"
-                android:paddingStart="8dp"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/et_email" />
+                <Spinner
+                    android:id="@+id/spn_region"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginEnd="32dp"
+                    android:background="@drawable/custom_input"
+                    android:spinnerMode="dropdown"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/spn_rank" />
 
-            <EditText
-                android:id="@+id/et_confirmpassword"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginEnd="32dp"
-                android:background="@drawable/custom_input"
-                android:drawableStart="@drawable/custom_lock"
-                android:drawablePadding="12dp"
-                android:focusable="true"
-                android:hint="Confirm Password"
-                android:inputType="textPassword"
-                android:paddingStart="8dp"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/et_password" />
+                <Spinner
+                    android:id="@+id/spn_agent"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginEnd="32dp"
+                    android:background="@drawable/custom_input"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/spn_region"/>
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_registerbutton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
-                android:layout_marginEnd="40dp"
-                android:layout_marginTop="60dp"
-                android:text="Register"
-                android:textSize="36sp"
-                android:textColor="@color/white"
-                android:background="@color/valorant_red2"
-                app:layout_constraintTop_toBottomOf="@id/et_confirmpassword"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                <EditText
+                    android:id="@+id/et_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginEnd="32dp"
+                    android:background="@drawable/custom_input"
+                    android:drawableStart="@drawable/custom_email"
+                    android:drawablePadding="12dp"
+                    android:focusable="true"
+                    android:hint="@string/login_email"
+                    android:inputType="textEmailAddress"
+                    android:paddingStart="8dp"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/spn_agent" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </LinearLayout>
+                <EditText
+                    android:id="@+id/et_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginEnd="32dp"
+                    android:background="@drawable/custom_input"
+                    android:drawableStart="@drawable/custom_lock"
+                    android:drawablePadding="12dp"
+                    android:focusable="true"
+                    android:hint="@string/login_password"
+                    android:inputType="textPassword"
+                    android:paddingStart="8dp"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/et_email" />
 
-</ScrollView>
+                <EditText
+                    android:id="@+id/et_confirmpassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginEnd="32dp"
+                    android:background="@drawable/custom_input"
+                    android:drawableStart="@drawable/custom_lock"
+                    android:drawablePadding="12dp"
+                    android:focusable="true"
+                    android:hint="Confirm Password"
+                    android:inputType="textPassword"
+                    android:paddingStart="8dp"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/et_password" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_registerbutton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginEnd="40dp"
+                    android:layout_marginTop="60dp"
+                    android:text="Register"
+                    android:textSize="36sp"
+                    android:textColor="@color/white"
+                    android:background="@color/valorant_red2"
+                    app:layout_constraintTop_toBottomOf="@id/et_confirmpassword"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/pb_progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"/>
+
+</RelativeLayout>

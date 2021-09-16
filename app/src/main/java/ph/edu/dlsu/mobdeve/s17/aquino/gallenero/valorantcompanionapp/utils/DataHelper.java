@@ -3,6 +3,8 @@ package ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.utils;
 import java.util.ArrayList;
 import java.util.Random;
 
+import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.models.MatchRecord;
+
 public class DataHelper {
 
     public DataHelper(){

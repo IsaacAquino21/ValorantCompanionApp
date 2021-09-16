@@ -17,12 +17,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.time.LocalDateTime;
 import java.util.Objects;
 
 import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.databinding.ActivityAddMatchBinding;
-import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.utils.DataHelper;
-import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.utils.MatchRecord;
+import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.models.MatchRecord;
 
 public class AddMatchActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private ActivityAddMatchBinding binding;
@@ -213,7 +211,7 @@ public class AddMatchActivity extends AppCompatActivity implements AdapterView.O
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
                     Intent intent = new Intent();
-                    setResult(RESULT_OK);
+                    setResult(RESULT_OK, intent);
                     finish();
                 }
 

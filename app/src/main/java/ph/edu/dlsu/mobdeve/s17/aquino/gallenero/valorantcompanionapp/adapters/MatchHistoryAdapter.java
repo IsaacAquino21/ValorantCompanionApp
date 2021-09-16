@@ -8,12 +8,14 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
 import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.R;
-import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.utils.MatchRecord;
+import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.interfaces.ItemClickListener;
+import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.models.MatchRecord;
 
 public class MatchHistoryAdapter extends RecyclerView.Adapter<MatchHistoryAdapter.MatchViewHolder> {
     private ArrayList<MatchRecord> matches;
@@ -37,11 +39,12 @@ public class MatchHistoryAdapter extends RecyclerView.Adapter<MatchHistoryAdapte
     @Override
     public void onBindViewHolder(@NonNull MatchViewHolder holder, int position) {
         holder.agent_name.setText(matches.get(position).getAgent());
+        holder.matchResult.setText("RESULT: " + matches.get(position).getMatchResult());
         holder.agent_pic.setImageResource(setAgentIcon(matches.get(position).getAgent()));
 
         //win
         if(matches.get(position).getMatchResult().equalsIgnoreCase("WIN")){
-            holder.layout.setBackgroundResource(R.drawable.agent_card1);
+            holder.layout.setBackgroundResource(R.drawable.agent_card3);
         }
 
         //lose
@@ -51,7 +54,7 @@ public class MatchHistoryAdapter extends RecyclerView.Adapter<MatchHistoryAdapte
 
         //draw
         else{
-            holder.layout.setBackgroundResource(R.drawable.agent_card3);
+            holder.layout.setBackgroundResource(R.drawable.agent_card1);
         }
     }
 
@@ -60,20 +63,18 @@ public class MatchHistoryAdapter extends RecyclerView.Adapter<MatchHistoryAdapte
         return matches.size();
     }
 
-    public interface ItemClickListener{
-        void onClick(View view, int position);
-    }
-
     protected class MatchViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         ImageView agent_pic;
         TextView agent_name;
-        RelativeLayout layout;
+        TextView matchResult;
+        ConstraintLayout layout;
 
         public MatchViewHolder(View view){
             super(view);
             agent_pic = view.findViewById(R.id.iv_rvagent_pic);
             agent_name = view.findViewById(R.id.tv_rvagent);
-            layout = view.findViewById(R.id.rl_layout);
+            matchResult = view.findViewById(R.id.tv_match_result);
+            layout = view.findViewById(R.id.cl_layout);
             view.setOnClickListener(this);
         }
 
