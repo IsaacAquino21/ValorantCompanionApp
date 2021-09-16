@@ -153,7 +153,6 @@ public class MatchHistoryAdapter extends RecyclerView.Adapter<MatchHistoryAdapte
                 id = R.drawable.agent_kayo;
                 break;
         }
-
         return id;
     }
 }

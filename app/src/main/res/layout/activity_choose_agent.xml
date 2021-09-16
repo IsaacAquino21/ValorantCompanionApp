@@ -11,8 +11,10 @@
 
     <ImageView
         android:id="@+id/iv_agent"
-        android:layout_width="360dp"
-        android:layout_height="360dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.40"
+        app:layout_constraintWidth_percent="0.40"
         android:src="@drawable/agent_cypher"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,6 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"
+        android:backgroundTint="@color/valorant_bluegreen"
         android:paddingStart="4dp"
         android:paddingEnd="4dp"
         android:text="Lock In"
@@ -46,10 +49,9 @@
         android:id="@+id/table_characters"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
         android:gravity="center"
         app:layout_constraintTop_toBottomOf="@+id/btn_lock_in"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
@@ -62,13 +64,12 @@
                 android:layout_gravity="center"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="8dp"
-                app:cardPreventCornerOverlap="true"
-                android:backgroundTint="@color/valorant_red1">
+                app:cardPreventCornerOverlap="true">
 
                 <ImageView
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:src="@drawable/agent_astra_icon" />
+                    android:src="@drawable/agent_astra_icon"/>
             </androidx.cardview.widget.CardView>
 
             <!--breach-->
@@ -116,7 +117,6 @@
                 <ImageView
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:padding="10dp"
                     android:src="@drawable/agent_cypher_icon" />
             </androidx.cardview.widget.CardView>
         </TableRow>
