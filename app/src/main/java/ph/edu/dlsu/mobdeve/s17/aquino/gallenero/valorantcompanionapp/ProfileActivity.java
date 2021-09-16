@@ -97,25 +97,7 @@ public class ProfileActivity extends AppCompatActivity{
         mAuth = FirebaseAuth.getInstance();
 
         //load info from database to view
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
-        reference.child(mAuth.getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                User profile = snapshot.getValue(User.class);
-
-                //info of user is found
-                if(profile != null){
-                    setUserInformation(profile);
-                    setAgentIcon(profile.getAgent());
-                    setRankIcon(profile.getRank());
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
+        getUser();
 
         //update profile info
         binding.btnUpdate.setOnClickListener(new View.OnClickListener() {
@@ -154,6 +136,30 @@ public class ProfileActivity extends AppCompatActivity{
         binding.tvRank.setText(user.getRank());
         binding.tvRegion.setText(user.getRegion());
         binding.tvEmail.setText(user.getEmail());
+    }
+
+    private void getUser(){
+        binding.pbProgressBar.setVisibility(View.VISIBLE);
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
+        reference.child(mAuth.getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User profile = snapshot.getValue(User.class);
+
+                //info of user is found
+                if(profile != null){
+                    setUserInformation(profile);
+                    setAgentIcon(profile.getAgent());
+                    setRankIcon(profile.getRank());
+                }
+                binding.pbProgressBar.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     //method used to set the agent icon in the view
@@ -314,4 +320,9 @@ public class ProfileActivity extends AppCompatActivity{
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 }

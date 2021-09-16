@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/black"
+    android:background="@drawable/agent_select_bg"
     android:clipToPadding="false"
     android:padding="10dp"
     tools:context=".ChooseAgentActivity">
@@ -38,7 +38,7 @@
         android:paddingStart="4dp"
         android:paddingEnd="4dp"
         android:text="Lock In"
-        app:layout_constraintBottom_toTopOf="@id/table_characters"
+        app:layout_constraintTop_toBottomOf="@+id/tv_agent_name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -48,6 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/btn_lock_in"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -61,7 +62,8 @@
                 android:layout_gravity="center"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="8dp"
-                app:cardPreventCornerOverlap="true">
+                app:cardPreventCornerOverlap="true"
+                android:backgroundTint="@color/valorant_red1">
 
                 <ImageView
                     android:layout_width="60dp"
