@@ -58,4 +58,8 @@ public class Post {
     public int getNumComments() {
         return numComments;
     }
+
+    public void setNumComments(int numComments) {
+        this.numComments = numComments;
+    }
 }

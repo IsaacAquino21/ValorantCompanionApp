@@ -36,11 +36,13 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ForumViewHol
 
     @Override
     public void onBindViewHolder(@NonNull ForumAdapter.ForumViewHolder holder, int position) {
+        String numComments = posts.get(position).getNumComments() + " comments";
         holder.agent.setImageResource(setAgentIcon(posts.get(position).getPosterAgent()));
         holder.riotid.setText(posts.get(position).getPosterRiotID());
         holder.tagline.setText(posts.get(position).getPosterTagline());
         holder.rank.setText(posts.get(position).getPosterRank());
         holder.post_content.setText(posts.get(position).getPostContent());
+        holder.num_comments.setText(numComments);
 
     }
 

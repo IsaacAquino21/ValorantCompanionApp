@@ -102,7 +102,12 @@ public class ForumActivity extends AppCompatActivity {
                 getPosts();
             }
         });
+    }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        getPosts();
     }
 
     private void getUser(){
@@ -144,6 +149,7 @@ public class ForumActivity extends AppCompatActivity {
                 intent.putExtra("user_riotid", user.getRiotId());
                 intent.putExtra("user_tagline", user.getTagline());
                 intent.putExtra("user_rank", user.getRank());
+                intent.putExtra("postId", posts.get(position).getPostID());
                 intent.putExtra("agent", posts.get(position).getPosterAgent());
                 intent.putExtra("riotid", posts.get(position).getPosterRiotID());
                 intent.putExtra("tagline", posts.get(position).getPosterTagline());
@@ -164,7 +170,6 @@ public class ForumActivity extends AppCompatActivity {
                     noPostsFlag = false;
                     showRecyclerView();
                     posts.clear();
-
                     for(DataSnapshot data: snapshot.getChildren()){
                         Post post = data.getValue(Post.class);
                         posts.add(0,post);

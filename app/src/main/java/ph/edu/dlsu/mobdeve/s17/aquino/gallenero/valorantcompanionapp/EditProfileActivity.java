@@ -2,6 +2,7 @@ package ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,11 +15,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
 import java.util.Objects;
 
 import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.databinding.ActivityEditProfileBinding;
+import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.models.Comment;
+import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.models.Post;
 import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.models.User;
 
 public class EditProfileActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
@@ -196,8 +204,6 @@ public class EditProfileActivity extends AppCompatActivity implements AdapterVie
                         }
                     }
                 });
-
-
     }
 
 }

@@ -1,7 +1,8 @@
 package ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.models;
 
 public class Comment {
-    private String agent;
+    private String commenterUID;
+    private String commenterAgent;
     private String commenterRiotID;
     private String commenterTagline;
     private String commenterRank;
@@ -10,17 +11,22 @@ public class Comment {
     public Comment() {
     }
 
-    public Comment(String agent, String commenterRiotID, String commenterTagline,
-                   String commenterRank, String comment) {
-        this.agent = agent;
+    public Comment(String commenterUID, String commenterAgent, String commenterRiotID,
+                   String commenterTagline, String commenterRank, String comment) {
+        this.commenterUID = commenterUID;
+        this.commenterAgent = commenterAgent;
         this.commenterRiotID = commenterRiotID;
         this.commenterTagline = commenterTagline;
         this.commenterRank = commenterRank;
         this.comment = comment;
     }
 
-    public String getAgent() {
-        return agent;
+    public String getCommenterUID() {
+        return commenterUID;
+    }
+
+    public String getCommenterAgent() {
+        return commenterAgent;
     }
 
     public String getCommenterRiotID() {

@@ -37,10 +37,10 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        binding.cvAddmatch.setOnClickListener(new View.OnClickListener() {
+        binding.cvMatchStatistics.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent add_match = new Intent(HomeActivity.this, AddMatchActivity.class);
+                Intent add_match = new Intent(HomeActivity.this, MatchStatisticsActivity.class);
                 startActivity(add_match);
             }
         });

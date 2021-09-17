@@ -17,11 +17,9 @@ import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.models.Comm
 
 public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentViewHolder>{
     private ArrayList<Comment> comments;
-    private ItemClickListener listener;
 
-    public CommentAdapter(ArrayList<Comment> comments, ItemClickListener listener) {
+    public CommentAdapter(ArrayList<Comment> comments) {
         this.comments = comments;
-        this.listener = listener;
     }
 
     @Override
@@ -35,7 +33,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentV
 
     @Override
     public void onBindViewHolder(@NonNull CommentAdapter.CommentViewHolder holder, int position) {
-        holder.agent.setImageResource(setAgentIcon(comments.get(position).getAgent()));
+        holder.agent.setImageResource(setAgentIcon(comments.get(position).getCommenterAgent()));
         holder.riotId.setText(comments.get(position).getCommenterRiotID());
         holder.tagline.setText(comments.get(position).getCommenterTagline());
         holder.rank.setText(comments.get(position).getCommenterRank());
@@ -48,7 +46,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentV
     }
 
 
-    protected class CommentViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    protected class CommentViewHolder extends RecyclerView.ViewHolder{
         ImageView agent;
         TextView riotId;
         TextView tagline;
@@ -64,10 +62,6 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentV
             comment = view.findViewById(R.id.tv_comment);
         }
 
-        @Override
-        public void onClick(View v) {
-
-        }
     }
 
     private int setAgentIcon(String agent){

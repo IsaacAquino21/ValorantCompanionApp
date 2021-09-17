@@ -99,19 +99,27 @@
         android:layout_height="0dp"
         android:layout_weight="7">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_comments"
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/srl_comments"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="wrap_content">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_comments"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone"/>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
 
         <TextView
             android:id="@+id/tv_no_comments_label"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="gone"
             android:text="No comments added yet!"
+            android:visibility="visible"
             android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="30sp"
             android:gravity="center"
             android:layout_centerInParent="true"/>
     </RelativeLayout>
