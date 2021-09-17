@@ -63,6 +63,7 @@ public class AddMatchActivity extends AppCompatActivity implements AdapterView.O
         });
     }
 
+    //initialize match info to default values
     private void initializeMatchInfo(){
         this.agent = "Agent";
         this.matchType = "Match Type";
@@ -74,6 +75,7 @@ public class AddMatchActivity extends AppCompatActivity implements AdapterView.O
         this.econRating = 0;
     }
 
+    //create resource from
     private void initializeSpinners(){
         //Get spinners
         Spinner spinner1 = binding.spnAgent;

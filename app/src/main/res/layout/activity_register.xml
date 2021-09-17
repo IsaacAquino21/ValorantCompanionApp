@@ -80,6 +80,7 @@
                     android:focusable="true"
                     android:hint="Tagline: (e.g. #0000)"
                     android:paddingStart="8dp"
+                    android:maxLength="6"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:inputType="text"
