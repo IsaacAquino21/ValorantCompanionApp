@@ -23,10 +23,14 @@ import java.util.Objects;
 
 import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.databinding.ActivityLoginBinding;
 
+/**
+ * This class is responsible for the login page of the application
+ */
 public class LoginActivity extends AppCompatActivity {
     private ActivityLoginBinding binding;
     private FirebaseAuth mAuth;
-    //launcher for HomeActivity
+
+    //launcher for RegisterActivity
     private ActivityResultLauncher<Intent> launchRegister =
             registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
                     new ActivityResultCallback<ActivityResult>() {
@@ -58,6 +62,7 @@ public class LoginActivity extends AppCompatActivity {
         //Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
 
+        //listener for the register button
         binding.btnRegisterbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,6 +71,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        //listener for the login button
         binding.btnLoginbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,6 +83,12 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * This method is responsible for validating the account details provided.
+     * If any error is found, this methods sets an error to that field if applicable, else puts a
+     * toast message instead.
+     * @return -1 if a problem is encountered in any of the details, else returns 0.
+     */
     private int validateAccountDetails(){
         String email = binding.etEmail.getText().toString();
         String password = binding.etPassword.getText().toString();
@@ -108,13 +120,18 @@ public class LoginActivity extends AppCompatActivity {
         return 0;
     }
 
+    /**
+     * This method is responsible for logging in the user using FirebaseAuth.
+     */
     private void loginUser(){
+        binding.pbProgressBar.setVisibility(View.VISIBLE);
         String email = binding.etEmail.getText().toString().trim();
         String password = binding.etPassword.getText().toString();
 
         mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
+                binding.pbProgressBar.setVisibility(View.GONE);
                 if(task.isSuccessful()){
                     Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                     startActivity(intent);

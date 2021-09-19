@@ -10,6 +10,9 @@ import java.util.Objects;
 
 import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.databinding.ActivityTipsTricksBinding;
 
+/**
+ * This class is responsible for the TipsTricks Activity of the application
+ */
 public class TipsTricksActivity extends AppCompatActivity {
     ActivityTipsTricksBinding binding;
     String agent;
@@ -27,6 +30,78 @@ public class TipsTricksActivity extends AppCompatActivity {
 
         setAgentPage(agent);
     }
+
+    /**
+     * This method calls the corresponding setup method for the selected agent from the ChooseAgent activity.
+     */
+    private void setAgentPage(String agent){
+        switch (agent){
+            case "Brimstone":
+                setupBrimstone();
+                break;
+
+            case "Phoenix":
+                setupPhoenix();
+                break;
+
+            case "Sage":
+                setupSage();
+                break;
+
+            case "Sova":
+                setupSova();
+                break;
+
+            case "Viper":
+                setupViper();
+                break;
+
+            case "Cypher":
+                break;
+
+            case "Reyna":
+                setupReyna();
+                break;
+
+            case "Killjoy":
+                setupKilljoy();
+                break;
+
+            case "Breach":
+                setupBreach();
+                break;
+
+            case "Omen":
+                setupOmen();
+                break;
+
+            case "Jett":
+                setupJett();
+                break;
+
+            case "Raze":
+                setupRaze();
+                break;
+
+            case "Skye":
+                setupSkye();
+                break;
+
+            case "Astra":
+                setupAstra();
+                break;
+
+            case "Yoru":
+                setupYoru();
+                break;
+
+            case "Kay/o":
+                setupKayo();
+                break;
+        }
+    }
+
+    /*setup methods for the different agents*/
 
     private void setupAstra(){
         binding.llAbilityFifth.setVisibility(View.VISIBLE);
@@ -441,72 +516,5 @@ public class TipsTricksActivity extends AppCompatActivity {
 
         binding.gifTipThree.setImageResource(R.drawable.agent_yoru_thirdtip);
         binding.tvTipThree.setText(R.string.yoru_tip3);
-    }
-
-    private void setAgentPage(String agent){
-        switch (agent){
-            case "Brimstone":
-                setupBrimstone();
-                break;
-
-            case "Phoenix":
-                setupPhoenix();
-                break;
-
-            case "Sage":
-                setupSage();
-                break;
-
-            case "Sova":
-                setupSova();
-                break;
-
-            case "Viper":
-                setupViper();
-                break;
-
-            case "Cypher":
-                break;
-
-            case "Reyna":
-                setupReyna();
-                break;
-
-            case "Killjoy":
-                setupKilljoy();
-                break;
-
-            case "Breach":
-                setupBreach();
-                break;
-
-            case "Omen":
-                setupOmen();
-                break;
-
-            case "Jett":
-                setupJett();
-                break;
-
-            case "Raze":
-                setupRaze();
-                break;
-
-            case "Skye":
-                setupSkye();
-                break;
-
-            case "Astra":
-                setupAstra();
-                break;
-
-            case "Yoru":
-                setupYoru();
-                break;
-
-            case "Kay/o":
-                setupKayo();
-                break;
-        }
     }
 }

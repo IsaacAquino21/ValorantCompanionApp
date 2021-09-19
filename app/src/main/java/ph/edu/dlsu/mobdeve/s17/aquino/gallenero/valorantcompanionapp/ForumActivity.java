@@ -31,6 +31,9 @@ import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.interfaces.
 import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.models.Post;
 import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.models.User;
 
+/**
+ * This class is responsible for the forum page of the application
+ */
 public class ForumActivity extends AppCompatActivity {
     private ActivityForumBinding binding;
     private ArrayList<Post> posts;
@@ -40,6 +43,7 @@ public class ForumActivity extends AppCompatActivity {
     private User user;
     private boolean noPostsFlag = true;
 
+    //launcher for the add post activity
     private ActivityResultLauncher<Intent> launchAddPost =
             registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
                     new ActivityResultCallback<ActivityResult>() {
@@ -75,14 +79,24 @@ public class ForumActivity extends AppCompatActivity {
         //initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
 
+        //initialize array list for the posts
         posts = new ArrayList<>();
+
+        //get current user details from db
         getUser();
+
+        //set the listener for the posts
         setOnClickListener();
+
+        //get posts from db
         getPosts();
+
+        //setup recycler view
         forumAdapter = new ForumAdapter(posts, listener);
         binding.rvView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         binding.rvView.setAdapter(forumAdapter);
 
+        //listener for the add post button
         binding.btnAddPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -96,6 +110,7 @@ public class ForumActivity extends AppCompatActivity {
             }
         });
 
+        //listener for the swipe up gesture for swipe refresh layout
         binding.swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -104,12 +119,16 @@ public class ForumActivity extends AppCompatActivity {
         });
     }
 
+    //update posts onStart
     @Override
     protected void onStart() {
         super.onStart();
         getPosts();
     }
 
+    /**
+     * This method gets the information of the current user from the db
+     */
     private void getUser(){
         binding.pbProgressBar.setVisibility(View.VISIBLE);
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
@@ -135,10 +154,16 @@ public class ForumActivity extends AppCompatActivity {
                 });
     }
 
+    /**
+     * This method sets the obtained info from the db to the User instance of the class
+     */
     private void setUser(User user){
         this.user = user;
     }
 
+    /**
+     * This method sets up the ItemClickListener for each post
+     */
     private void setOnClickListener(){
         listener = new ItemClickListener() {
             @Override
@@ -160,6 +185,10 @@ public class ForumActivity extends AppCompatActivity {
         };
     }
 
+    /**
+     * This method gets the post from the database and updates the view accordingly using the adapter.
+     * If no post is found, hides the recycler view and shows the no post message
+     */
     private void getPosts(){
         binding.pbProgressBar.setVisibility(View.VISIBLE);
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Posts");
@@ -191,19 +220,20 @@ public class ForumActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * This method hides the recycler view and shows the no post label
+     */
     private void hideRecyclerView(){
         binding.rvView.setVisibility(View.GONE);
         binding.tvNoPostsLabel.setVisibility(View.VISIBLE);
     }
 
+    /**
+     * This method shows the recycler view and hides the no post label
+     */
     private void showRecyclerView(){
         binding.rvView.setVisibility(View.VISIBLE);
         binding.tvNoPostsLabel.setVisibility(View.GONE);
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        finish();
-    }
 }

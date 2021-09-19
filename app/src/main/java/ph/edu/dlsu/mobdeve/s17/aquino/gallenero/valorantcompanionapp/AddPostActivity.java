@@ -19,7 +19,9 @@ import java.util.Date;
 
 import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.databinding.ActivityAddPostBinding;
 import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.models.Post;
-
+/**
+ * This class is responsible for the add post activity of the application
+ */
 public class AddPostActivity extends AppCompatActivity {
     ActivityAddPostBinding binding;
     private String uID;
@@ -40,6 +42,7 @@ public class AddPostActivity extends AppCompatActivity {
         //update views
         initializeUserInfo();
 
+        //listener for the cancel button
         binding.btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,6 +50,7 @@ public class AddPostActivity extends AppCompatActivity {
             }
         });
 
+        //listener for the post button
         binding.btnPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,6 +63,9 @@ public class AddPostActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * This method initializes the attributes of the class using data from the previous activity.
+     */
     private void initializeAttributes(){
         Bundle bundle = getIntent().getExtras();
         this.uID = bundle.getString("uId");
@@ -68,6 +75,9 @@ public class AddPostActivity extends AppCompatActivity {
         this.rank = bundle.getString("rank");
     }
 
+    /**
+     * This method updates the view using the obtained data
+     */
     private void initializeUserInfo(){
         binding.ivAgent.setImageResource(setAgentIcon(agent));
         binding.tvRiotid.setText(riotId);
@@ -75,6 +85,10 @@ public class AddPostActivity extends AppCompatActivity {
         binding.tvRank.setText(rank);
     }
 
+    /**
+     * This method validates that the post has content. If there is post content, then this method
+     * sets the postContent attribute of the class to the String value of the edit text content.
+     */
     private int validatePost(){
         if(binding.etPostContent.getText().toString().trim().isEmpty()){
             binding.etPostContent.setError("Please write something!");
@@ -87,6 +101,9 @@ public class AddPostActivity extends AppCompatActivity {
         return 0;
     }
 
+    /**
+     * This method adds the post to the database
+     */
     private void addPost(){
         Date date = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
@@ -115,6 +132,10 @@ public class AddPostActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * This method sets the agent icon of the page using the String name of the agent.
+     * @param agent is the String name of the main agent of the user.
+     */
     private int setAgentIcon(String agent){
         //default
         int id = R.drawable.agent_brimstone_icon;
@@ -184,8 +205,6 @@ public class AddPostActivity extends AppCompatActivity {
                 id = R.drawable.agent_kayo_icon;
                 break;
         }
-
         return id;
     }
-
 }

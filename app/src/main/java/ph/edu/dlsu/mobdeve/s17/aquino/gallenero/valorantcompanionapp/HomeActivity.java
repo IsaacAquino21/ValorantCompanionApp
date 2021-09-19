@@ -10,6 +10,9 @@ import java.util.Objects;
 
 import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.databinding.ActivityHomeBinding;
 
+/**
+ * This class is responsible for the Homepage of the application
+ */
 public class HomeActivity extends AppCompatActivity {
     ActivityHomeBinding binding;
     @Override
@@ -21,6 +24,7 @@ public class HomeActivity extends AppCompatActivity {
         //hide action bar
         Objects.requireNonNull(getSupportActionBar()).hide();
 
+        //listener for the profile page button
         binding.cvProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -29,6 +33,7 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        //listener for the dictionary button
         binding.cvDictionary.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -37,14 +42,7 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        binding.cvMatchStatistics.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent add_match = new Intent(HomeActivity.this, MatchStatisticsActivity.class);
-                startActivity(add_match);
-            }
-        });
-
+        //listener for the match history button
         binding.cvMatchHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,6 +51,16 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        //listener for the match statistics button
+        binding.cvMatchStatistics.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent add_match = new Intent(HomeActivity.this, MatchStatisticsActivity.class);
+                startActivity(add_match);
+            }
+        });
+
+        //listener for the agents button
         binding.cvAgents.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,6 +69,7 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        //listener for the forum button
         binding.cvForum.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,11 +77,5 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(forum);
             }
         });
-
     }
-
-
-
-
-
 }

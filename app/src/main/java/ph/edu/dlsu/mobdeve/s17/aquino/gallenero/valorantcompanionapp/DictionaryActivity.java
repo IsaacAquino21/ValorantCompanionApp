@@ -20,6 +20,9 @@ import java.util.Objects;
 
 import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.databinding.ActivityDictionaryBinding;
 
+/**
+ * This class is responsible for the Dictionary page of the application
+ */
 public class DictionaryActivity extends AppCompatActivity {
     private ActivityDictionaryBinding binding;
     private DatabaseReference mref;
@@ -31,14 +34,56 @@ public class DictionaryActivity extends AppCompatActivity {
         binding = ActivityDictionaryBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        keywords = new ArrayList<String>();
-
         //hide action bar
         Objects.requireNonNull(getSupportActionBar()).hide();
 
-        //get reference to dictionary in database
+        //instantiate the arraylist for the class
+        keywords = new ArrayList<>();
+
+        //reference for the database
         mref = FirebaseDatabase.getInstance().getReference("Dictionary");
 
+        //get keywords from db
+        getKeywords();
+
+        //set adapter for edit text
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_list_item_1, keywords);
+        binding.etKeyword.setAdapter(adapter);
+
+        //event listener for search button
+        binding.btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String keyword = binding.etKeyword.getText().toString().toLowerCase().trim();
+                if(validateKeyword(keyword) == 0){
+                    getMeaning(keyword);
+                }
+            }
+        });
+    }
+
+    /**
+     * This method is responsible for validating the keyword provided. If the edit text is empty,
+     * set an error for the edit text.
+     * @return -1 if a problem is edit text is empty, else returns 0.
+     */
+    private int validateKeyword(String keyword){
+        if(keyword.isEmpty()){
+            binding.etKeyword.setError("Please enter keyword/s");
+            return -1;
+        }
+
+        else{
+            return 0;
+        }
+    }
+
+    /**
+     * This method is getting the keywords from the database and adds them to the keywords arraylist.
+     * Used to allow autocomplete function of edit text to work.
+     */
+    private void getKeywords(){
         //get all keywords from database
         mref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -55,50 +100,31 @@ public class DictionaryActivity extends AppCompatActivity {
 
             }
         });
-
-        //set adapter for edit text
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, keywords);
-        binding.etKeyword.setAdapter(adapter);
-
-        //event listener for search button
-        binding.btnSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String keyword = binding.etKeyword.getText().toString().toLowerCase().trim();
-                if(validateKeyword(keyword) == 0){
-                    mref.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            if(snapshot.child(keyword).exists()){
-                                binding.tvWord.setText(keyword.toUpperCase());
-                                binding.tvMeaning.setText(snapshot.child(keyword).getValue().toString());
-                            }
-
-                            else{
-                                Toast.makeText(getApplicationContext(), "No results found", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
-                }
-            }
-        });
-
     }
 
-    public int validateKeyword(String keyword){
-        if(keyword.isEmpty()){
-            Toast.makeText(getApplicationContext(), "Please enter keyword/s", Toast.LENGTH_SHORT).show();
-            return -1;
-        }
+    /**
+     * This method is responsible for getting the meaning of the chosen keyword by the user
+     * by obtaining it from the database.
+     */
+    private void getMeaning(String keyword){
+        mref = FirebaseDatabase.getInstance().getReference("Dictionary");
+        mref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.child(keyword).exists()){
+                    binding.tvWord.setText(keyword.toUpperCase());
+                    binding.tvMeaning.setText(snapshot.child(keyword).getValue().toString());
+                }
 
-        else{
-            return 0;
-        }
+                else{
+                    Toast.makeText(getApplicationContext(), "No results found", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 }

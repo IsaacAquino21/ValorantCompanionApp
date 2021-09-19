@@ -22,6 +22,9 @@ import java.util.Objects;
 import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.databinding.ActivityAddMatchBinding;
 import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.models.MatchRecord;
 
+/**
+ * This class is responsible for the add post activity of the application
+ */
 public class AddMatchActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private ActivityAddMatchBinding binding;
     private String agent;
@@ -63,7 +66,9 @@ public class AddMatchActivity extends AppCompatActivity implements AdapterView.O
         });
     }
 
-    //initialize match info to default values
+    /**
+     * This method initializes the attributes to the default info
+     */
     private void initializeMatchInfo(){
         this.agent = "Agent";
         this.matchType = "Match Type";
@@ -75,7 +80,9 @@ public class AddMatchActivity extends AppCompatActivity implements AdapterView.O
         this.econRating = 0;
     }
 
-    //create resource from
+    /**
+     * This method initializes the spinners using the string array resource for each spinners
+     */
     private void initializeSpinners(){
         //Get spinners
         Spinner spinner1 = binding.spnAgent;
@@ -136,10 +143,13 @@ public class AddMatchActivity extends AppCompatActivity implements AdapterView.O
 
     }
 
+    /**
+     * This method checks if all the details provided are not empty and valid
+     */
     private int validateMatchDetails(){
-        if(this.agent.equalsIgnoreCase("Agent")){
+        if(this.matchResult.equalsIgnoreCase("Match Result")){
             Toast.makeText(getApplicationContext(),
-                    "Please select agent used!", Toast.LENGTH_SHORT).show();
+                    "Please select match result!", Toast.LENGTH_SHORT).show();
             return -1;
         }
 
@@ -149,9 +159,9 @@ public class AddMatchActivity extends AppCompatActivity implements AdapterView.O
             return -1;
         }
 
-        else if(this.matchResult.equalsIgnoreCase("Match Result")){
+        else if(this.agent.equalsIgnoreCase("Agent")){
             Toast.makeText(getApplicationContext(),
-                    "Please select match result!", Toast.LENGTH_SHORT).show();
+                    "Please select agent used!", Toast.LENGTH_SHORT).show();
             return -1;
         }
 
@@ -161,38 +171,31 @@ public class AddMatchActivity extends AppCompatActivity implements AdapterView.O
         }
 
         else if(binding.etDeaths.getText().toString().isEmpty()){
-            binding.etKills.setError("Enter number of deaths!");
+            binding.etDeaths.setError("Enter number of deaths!");
             return -1;
         }
 
         else if(binding.etAssists.getText().toString().isEmpty()){
-            binding.etKills.setError("Enter number of assists!");
+            binding.etAssists.setError("Enter number of assists!");
             return -1;
         }
 
         else if(binding.etEconrating.getText().toString().isEmpty()){
-            binding.etKills.setError("Enter Econ Rating!");
+            binding.etEconrating.setError("Enter Econ Rating!");
             return -1;
         }
 
         else if(binding.etAveragecombatscore.getText().toString().isEmpty()){
-            binding.etKills.setError("Enter Average Combat Score!");
-            return -1;
-        }
-
-        else if(Long.parseLong(binding.etEconrating.getText().toString()) < 0){
-            binding.etEconrating.setError("Econ rating can't be negative!");
-            return -1;
-        }
-
-        else if(Long.parseLong(binding.etAveragecombatscore.getText().toString()) < 0){
-            binding.etEconrating.setError("Average combat score can't be negative!");
+            binding.etAveragecombatscore.setError("Enter Average Combat Score!");
             return -1;
         }
 
         return 0;
     }
 
+    /**
+     * This method adds the record to the database
+     */
     private void addRecord(){
         this.kills = Integer.parseInt(binding.etKills.getText().toString());
         this.deaths = Integer.parseInt(binding.etDeaths.getText().toString());
@@ -223,8 +226,6 @@ public class AddMatchActivity extends AppCompatActivity implements AdapterView.O
                 }
             }
         });
-
-
     }
 
 }

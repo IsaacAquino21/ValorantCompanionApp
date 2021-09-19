@@ -48,6 +48,7 @@ public class PostSpecificActivity extends AppCompatActivity {
     private ArrayList<Comment> comments;
     private CommentAdapter commentsAdapter;
     private boolean noCommentsFlag = true;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -29,6 +29,9 @@ import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.models.Comm
 import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.models.Post;
 import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.models.User;
 
+/**
+ * This class is responsible for the edit profile activity of the application
+ */
 public class EditProfileActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private String riotId;
     private String tagline;
@@ -53,6 +56,7 @@ public class EditProfileActivity extends AppCompatActivity implements AdapterVie
         //initialize firebase auth
         mAuth = FirebaseAuth.getInstance();
 
+        //initialize spinners and account details
         initializeSpinners();
         initializeAccountDetails();
 
@@ -69,6 +73,10 @@ public class EditProfileActivity extends AppCompatActivity implements AdapterVie
         });
     }
 
+    /**
+     * This method changes the chosen rank, region, or agent when the user selects a choice using the
+     * associated spinners.
+     */
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         switch (parent.getId()){
@@ -91,6 +99,9 @@ public class EditProfileActivity extends AppCompatActivity implements AdapterVie
 
     }
 
+    /**
+     * This method sets the account details of the object to their default value.
+     */
     private void initializeAccountDetails(){
         this.riotId = "";
         this.tagline = "";
@@ -99,6 +110,10 @@ public class EditProfileActivity extends AppCompatActivity implements AdapterVie
         this.agent = "Agent";
     }
 
+    /**
+     * This method initializes the spinners using the string array resources for each spinner and
+     * sets this class as the listener
+     */
     private void initializeSpinners(){
         //Initialize spinners for rank and region
         Spinner spinner1 = binding.spnRank;
@@ -133,6 +148,12 @@ public class EditProfileActivity extends AppCompatActivity implements AdapterVie
         spinner3.setOnItemSelectedListener(this);
     }
 
+    /**
+     * This method is responsible for validating the account details provided.
+     * If any error is found, this methods sets an error to that field if applicable, else puts a
+     * toast message instead.
+     * @return -1 if a problem is encountered in any of the details, else returns 0.
+     */
     private int validAccountDetails(){
         String riotId = binding.etRiotid.getText().toString();
         String tagline = binding.etTagline.getText().toString();
@@ -151,6 +172,20 @@ public class EditProfileActivity extends AppCompatActivity implements AdapterVie
             return -1;
         }
 
+        //wrong format
+        else if(!(tagline.charAt(0) == '#')){
+            binding.etTagline.setError("taglines must start with '#'!");
+            binding.etTagline.requestFocus();
+            return -1;
+        }
+
+        //invalid tagline length
+        else if(tagline.trim().length() < 5){
+            binding.etTagline.setError("Invalid tagline length!");
+            binding.etTagline.requestFocus();
+            return -1;
+        }
+
         //check if user has selected a rank and region
         if(this.rank.equals("Rank")){
             Toast.makeText(getApplicationContext(),
@@ -158,12 +193,14 @@ public class EditProfileActivity extends AppCompatActivity implements AdapterVie
             return -1;
         }
 
+        //no region selected
         else if(this.region.equals("Region")){
             Toast.makeText(getApplicationContext(),
                     "Please select a region!", Toast.LENGTH_SHORT).show();
             return -1;
         }
 
+        //no agent selected
         else if(this.agent.equals("Agent")){
             Toast.makeText(getApplicationContext(),
                     "Please select a main agent!", Toast.LENGTH_SHORT).show();
@@ -175,6 +212,9 @@ public class EditProfileActivity extends AppCompatActivity implements AdapterVie
         return 0;
     }
 
+    /**
+     * This method is responsible for updating the user using Firebase Auth.
+     */
     private void updateUser(){
         String riotId = binding.etRiotid.getText().toString().trim();
         String tagline = binding.etTagline.getText().toString().trim();

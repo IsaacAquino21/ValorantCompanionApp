@@ -25,6 +25,9 @@ import java.util.Objects;
 import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.databinding.ActivityProfileBinding;
 import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.models.User;
 
+/**
+ * This class is responsible for the Profile page of the application
+ */
 public class ProfileActivity extends AppCompatActivity{
     private ActivityProfileBinding binding;
     private FirebaseAuth mAuth;
@@ -65,6 +68,7 @@ public class ProfileActivity extends AppCompatActivity{
                         }
                     });
 
+    //launcher for the edit password page
     private ActivityResultLauncher<Intent> launchEditPassword =
             registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
                     new ActivityResultCallback<ActivityResult>() {
@@ -108,6 +112,7 @@ public class ProfileActivity extends AppCompatActivity{
             }
         });
 
+        //listener for the change password button
         binding.btnChangepassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -116,7 +121,7 @@ public class ProfileActivity extends AppCompatActivity{
             }
         });
 
-        //signout
+        //listener for the signout button
         binding.btnSignout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -128,7 +133,9 @@ public class ProfileActivity extends AppCompatActivity{
         });
     }
 
-    //method used to set the information obtained from db to the view
+    /**
+     * This method sets the information obtained from the database to the page.
+     */
     private void setUserInformation(User user){
         binding.tvRiotid.setText(user.getRiotId());
         binding.tvTagline.setText(user.getTagline());
@@ -138,6 +145,9 @@ public class ProfileActivity extends AppCompatActivity{
         binding.tvEmail.setText(user.getEmail());
     }
 
+    /**
+     * This method accesses the database and gets the profile associated with the current user's Uid.
+     */
     private void getUser(){
         binding.pbProgressBar.setVisibility(View.VISIBLE);
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
@@ -162,7 +172,10 @@ public class ProfileActivity extends AppCompatActivity{
         });
     }
 
-    //method used to set the agent icon in the view
+    /**
+     * This method sets the main agent pic of the profile using the name of the main agent of the user.
+     * @param agent is the String name of the user's main agent.
+     */
     private void setAgentIcon(String agent){
         switch (agent){
             case "Brimstone":
@@ -231,7 +244,10 @@ public class ProfileActivity extends AppCompatActivity{
         }
     }
 
-    //method used to set the rank icon in the view
+    /**
+     * This method is responsible for setting the rank logo of the user using their current rank.
+     * @param rank is the String representing their current rank.
+     */
     private void setRankIcon(String rank){
         switch (rank){
             case "Unranked":
@@ -318,11 +334,5 @@ public class ProfileActivity extends AppCompatActivity{
                 binding.ivRankPic.setImageResource(R.drawable.radiant_rank);
                 break;
         }
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        finish();
     }
 }

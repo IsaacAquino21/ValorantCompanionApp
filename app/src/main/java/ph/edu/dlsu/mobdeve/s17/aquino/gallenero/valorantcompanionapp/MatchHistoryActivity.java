@@ -28,7 +28,9 @@ import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.databinding
 import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.interfaces.ItemClickListener;
 import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.models.MatchRecord;
 import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.models.User;
-
+/**
+ * This class is responsible for the TipsTricks Activity of the application
+ */
 public class MatchHistoryActivity extends AppCompatActivity {
     private ActivityMatchHistoryBinding binding;
     private ArrayList<MatchRecord> matchRecords;
@@ -37,35 +39,7 @@ public class MatchHistoryActivity extends AppCompatActivity {
     private User user;
     private boolean noMatchFlag = true;
 
-    private DatabaseReference recordsReference = FirebaseDatabase.getInstance()
-            .getReference("Match Records");
-
-    private ValueEventListener matchRecordlistener = new ValueEventListener() {
-        @Override
-        public void onDataChange(@NonNull DataSnapshot snapshot) {
-            if(snapshot.exists()){
-                noMatchFlag = false;
-                showRecyclerView();
-                matchRecords.clear();
-
-                for (DataSnapshot dataSnapshot: snapshot.getChildren()){
-                    MatchRecord matchRecord = dataSnapshot.getValue(MatchRecord.class);
-                    matchRecords.add(0,matchRecord);
-                }
-                matchHistoryAdapter.notifyDataSetChanged();
-            }
-
-            else{
-                hideRecyclerView();
-            }
-        }
-
-        @Override
-        public void onCancelled(@NonNull DatabaseError error) {
-
-        }
-    };
-
+    //launcher for add match activity
     private ActivityResultLauncher<Intent> launchAddMatch =
             registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
                     new ActivityResultCallback<ActivityResult>() {
@@ -99,14 +73,24 @@ public class MatchHistoryActivity extends AppCompatActivity {
         //replace the text on action bar
         getSupportActionBar().setTitle("Match History");
 
+        //instantiate match records list
         matchRecords = new ArrayList<>();
+
+        //get user info from db
         getUser();
+
+        //set listener for the matches
         setOnClickListener();
+
+        //get matches from db
         getMatches();
+
+        //setup recycler view
         matchHistoryAdapter = new MatchHistoryAdapter(matchRecords, listener);
         binding.rvView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         binding.rvView.setAdapter(matchHistoryAdapter);
 
+        //listener for add match button
         binding.btnAddmatch.setOnClickListener(v -> {
             Intent gotoAddMatch = new Intent(MatchHistoryActivity.this, AddMatchActivity.class);
             gotoAddMatch.putExtra("Match Number", matchRecords.size());
@@ -115,12 +99,14 @@ public class MatchHistoryActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        this.recordsReference.removeEventListener(matchRecordlistener);
+    protected void onStart() {
+        super.onStart();
+        getMatches();
     }
 
-    //allows to click a card and then go to the match specific activity
+    /**
+     * This method sets up the listener for the matches
+     */
     private void setOnClickListener(){
         listener = new ItemClickListener() {
             @Override
@@ -141,6 +127,9 @@ public class MatchHistoryActivity extends AppCompatActivity {
         };
     }
 
+    /**
+     * This method gets the current user's info from the database
+     */
     private void getUser(){
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
@@ -163,28 +152,61 @@ public class MatchHistoryActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * This method sets the User instance to the profile from db
+     */
     private void setUser(User user){
         this.user = user;
     }
 
+    /**
+     * This method is responsible getting the matches from the database
+     */
     private void getMatches() {
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        recordsReference.child(mAuth.getCurrentUser().getUid())
-                .addValueEventListener(matchRecordlistener);
+        DatabaseReference recordsReference = FirebaseDatabase.getInstance()
+                .getReference("Match Records");
+
+        recordsReference.child(mAuth.getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    noMatchFlag = false;
+                    showRecyclerView();
+                    matchRecords.clear();
+
+                    for (DataSnapshot dataSnapshot: snapshot.getChildren()){
+                        MatchRecord matchRecord = dataSnapshot.getValue(MatchRecord.class);
+                        matchRecords.add(0,matchRecord);
+                    }
+                    matchHistoryAdapter.notifyDataSetChanged();
+                }
+
+                else{
+                    hideRecyclerView();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
+
+    /**
+     * This method hides the recycler view and shows the no match label
+     */
     private void hideRecyclerView(){
         binding.rvView.setVisibility(View.GONE);
         binding.tvNoMatchLabel.setVisibility(View.VISIBLE);
     }
 
+    /**
+     * This method shows the recycler view and hides the no match label
+     */
     private void showRecyclerView(){
         binding.rvView.setVisibility(View.VISIBLE);
         binding.tvNoMatchLabel.setVisibility(View.GONE);
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        finish();
     }
 }

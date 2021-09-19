@@ -11,11 +11,15 @@ import java.util.Objects;
 
 import ph.edu.dlsu.mobdeve.s17.aquino.gallenero.valorantcompanionapp.databinding.ActivityChooseAgentBinding;
 
+/**
+ * This class is respnsible for allowing the user to pick an agent for the TipsTricks activity
+ */
 public class ChooseAgentActivity extends AppCompatActivity {
     private ActivityChooseAgentBinding binding;
 
     //default agent
     private String agent = "Cypher";
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -182,6 +186,9 @@ public class ChooseAgentActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * This method is responsible for updating the imageview when the user selects an agent
+     */
     private int setAgentIcon(String agent){
         //default
         int id = R.drawable.agent_brimstone;
@@ -252,11 +259,5 @@ public class ChooseAgentActivity extends AppCompatActivity {
                 break;
         }
         return id;
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        finish();
     }
 }
