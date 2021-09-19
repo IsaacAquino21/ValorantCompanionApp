@@ -57,7 +57,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentV
             super(view);
             agent = view.findViewById(R.id.iv_agent);
             riotId = view.findViewById(R.id.tv_riotid);
-            tagline = view.findViewById(R.id.tv_rank);
+            tagline = view.findViewById(R.id.tv_tagline);
             rank = view.findViewById(R.id.tv_rank);
             comment = view.findViewById(R.id.tv_comment);
         }
